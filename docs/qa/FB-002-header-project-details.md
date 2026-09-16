@@ -7,7 +7,7 @@
 | **Stage** | UAT-2 / post FB-001 |
 | **From** | Jan (Upwork) |
 | **Type** | Bug |
-| **Status** | Verify — fixed 2026-09-11; tested on Morssinkhof + Vitens; deployed live |
+| **Status** | Closed — client confirmed header working (2026-09-13) |
 | **Requirements** | R8 (header from Project Details + custom properties) |
 | **Sample(s)** | `P220049-Morssinkhof` (sidebar shows correct project; header showed stale MN-O-STH / Vitens fields) |
 

@@ -6,8 +6,17 @@ if (!$user) {
     header('Location: login.php');
     exit;
 }
+$licence = ErcLicence::statusForCompany((int) $user['company_id']);
+if (empty($licence['can_use'])) {
+    header('Location: licence.php');
+    exit;
+}
 $companyName = htmlspecialchars($user['company_name'], ENT_QUOTES, 'UTF-8');
 $displayName = htmlspecialchars($user['display_name'], ENT_QUOTES, 'UTF-8');
+$licenceStatus = htmlspecialchars((string) ($licence['status'] ?? ''), ENT_QUOTES, 'UTF-8');
+$licenceLabel = htmlspecialchars((string) ($licence['label'] ?? ''), ENT_QUOTES, 'UTF-8');
+$licenceDays = isset($licence['days_remaining']) ? (int) $licence['days_remaining'] : null;
+$showTrialBanner = ($licence['status'] ?? '') === 'trial';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,13 +26,23 @@ $displayName = htmlspecialchars($user['display_name'], ENT_QUOTES, 'UTF-8');
   <meta name="color-scheme" content="light" />
   <title>EasyReportCreator — Report app</title>
   <link rel="stylesheet" href="../assets/fonts.css?v=20260908c" />
-  <link rel="stylesheet" href="assets/report.css?v=20260908c" />
+  <link rel="stylesheet" href="assets/report.css?v=20260916b" />
 </head>
-<body>
+<body data-licence-status="<?= $licenceStatus ?>">
+  <?php if ($showTrialBanner): ?>
+  <div class="licence-banner" id="licence-banner" role="status">
+    <strong>7-day trial</strong>
+    <span id="licence-banner-text"><?= $licenceDays !== null ? htmlspecialchars((string) $licenceDays, ENT_QUOTES, 'UTF-8') . ' day(s) remaining' : $licenceLabel ?></span>
+    <a class="licence-banner-link" href="licence.php">Activate 1-year licence</a>
+  </div>
+  <?php else: ?>
+  <div class="licence-banner is-licensed" id="licence-banner" hidden role="status"></div>
+  <?php endif; ?>
   <header class="top title-bar">
     <div class="title-bar-brand">
       <a class="logo" href="../index.php"><span class="mark" aria-hidden="true"></span>EasyReport<span class="dim">Creator</span></a>
       <span class="company-chip" id="company-chip" title="Signed-in company"><?= $companyName ?></span>
+      <a class="licence-chip" id="licence-chip" href="licence.php" title="Licence status"><?= $licenceLabel ?><?php if ($licenceDays !== null): ?> · <?= (int) $licenceDays ?>d<?php endif; ?></a>
     </div>
     <div class="title-bar-actions" id="title-bar-actions">
       <button id="btn-header" class="btn ghost" type="button" disabled>Header setup</button>
@@ -222,6 +241,6 @@ $displayName = htmlspecialchars($user['display_name'], ENT_QUOTES, 'UTF-8');
     </form>
   </dialog>
 
-  <script src="assets/report.js?v=20260911a"></script>
+  <script src="assets/report.js?v=20260916a"></script>
 </body>
 </html>

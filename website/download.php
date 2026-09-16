@@ -10,7 +10,7 @@ require __DIR__ . '/inc/header.php';
   <div class="wrap">
     <div class="eyebrow">Report app</div>
     <h1>Upload ProcessPower.dcf — get Excel lists.</h1>
-    <p class="sub">Version 1 runs on easyreportcreator.com. Upload your Plant 3D database, choose a list, export English Excel. No desktop installer for V1.</p>
+    <p class="sub">Hosted on easyreportcreator.com with a <strong>7-day trial</strong>, then a <strong>1-year licence</strong> (PropertiesManager-aligned). Upload your Plant 3D database, choose a list, export English Excel. Desktop installer remains deferred.</p>
   </div>
 </section>
 
@@ -27,8 +27,9 @@ require __DIR__ . '/inc/header.php';
         </p>
         <p class="download-note">Open the report app, upload <code>ProcessPower.dcf</code> from your project folder, then preview and export. Typical file size is only a few MB.</p>
         <div class="download-actions">
-          <a class="btn" href="report/login.php">Open report app</a>
-          <a href="product.php" class="btn ghost">How it works</a>
+          <a class="btn" href="report/register.php">Start 7-day trial</a>
+          <a class="btn ghost" href="report/login.php">Open report app</a>
+          <a href="pricing.php" class="btn ghost">Pricing</a>
         </div>
       </div>
       <div class="download-card-side">

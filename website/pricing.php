@@ -2,15 +2,15 @@
 declare(strict_types=1);
 $page = 'pricing';
 $title = 'Pricing — EasyReportCreator | easyreportcreator.com';
-$description = 'Version 1 of EasyReportCreator is a delivered web application for your Plant 3D environment. Further licences and Pro write-back are quoted separately.';
+$description = 'EasyReportCreator: 7-day trial, then a 1-year licence — same commercial model as PropertiesManager. Hosted web app for AutoCAD Plant 3D lists.';
 require __DIR__ . '/inc/header.php';
 ?>
 
 <section class="page-head">
   <div class="wrap">
     <div class="eyebrow">Pricing</div>
-    <h1>Version 1 is a delivery, not a per-click fee.</h1>
-    <p class="sub">The current engagement is a 90–100 hour web application for your Plant 3D lists. Additional seats, write-back, or a later product licence are quoted when you need them.</p>
+    <h1>7-day trial. Then a 1-year licence.</h1>
+    <p class="sub">Same model as PropertiesManager: try the hosted report app free for seven days, then activate a one-year licence for ongoing use. Desktop installer stays deferred for now.</p>
   </div>
 </section>
 
@@ -18,35 +18,35 @@ require __DIR__ . '/inc/header.php';
   <div class="wrap">
     <div class="plans reveal">
       <div class="plan featured">
-        <div class="plan-name">Version 1 — delivered app</div>
-        <div class="plan-desc">The agreed web application on your sample project, plus this public site.</div>
-        <div class="plan-price-row">As quoted</div>
-        <div class="plan-price">90–100<span class="unit"> hours</span></div>
-        <div class="plan-sub">Target handover 11 September 2026</div>
+        <div class="plan-name">7-day trial</div>
+        <div class="plan-desc">Full report app access for your company — starts when you create an account.</div>
+        <div class="plan-price-row">Try first</div>
+        <div class="plan-price">7<span class="unit"> days</span></div>
+        <div class="plan-sub">No card required to start</div>
         <ul class="plan-feats">
-          <li>Eight core list types on MN-P-RHN-PID-0001</li>
-          <li>Header from Project Details + custom properties</li>
-          <li>Column picker and company templates</li>
-          <li>English Excel with logo and revision table</li>
-          <li>Light web UI + easyreportcreator.com on STRATO</li>
-          <li>One feedback round after first complete demo</li>
+          <li>Upload ProcessPower.dcf in the browser</li>
+          <li>All core Plant 3D list types</li>
+          <li>Column picker + company templates</li>
+          <li>English Excel export with header &amp; logo</li>
+          <li>Trial countdown in the app</li>
         </ul>
-        <a href="contact.php" class="btn block">Ask about delivery</a>
+        <a href="report/register.php" class="btn block">Start free trial</a>
       </div>
 
       <div class="plan">
-        <div class="plan-name">Later packages</div>
-        <div class="plan-desc">Optional work after Version 1, quoted separately.</div>
-        <div class="plan-price-row">Change request</div>
+        <div class="plan-name">1-year licence</div>
+        <div class="plan-desc">Annual licence / use for the hosted EasyReportCreator web app (PropertiesManager-aligned).</div>
+        <div class="plan-price-row">Annual</div>
         <div class="plan-price custom">On request</div>
-        <div class="plan-sub">Not included in the 100 hour package</div>
+        <div class="plan-sub">Activate with a licence key</div>
         <ul class="plan-feats">
-          <li>Pro write-back (user-defined properties, preview + approval)</li>
-          <li>Windows installer wrapper</li>
-          <li>Cloud / SSO hosting</li>
-          <li>3D / isometric list support</li>
+          <li>Full access for 12 months</li>
+          <li>Key activation in the report app</li>
+          <li>Company account + saved profile</li>
+          <li>Hosted on easyreportcreator.com (STRATO)</li>
+          <li>Renew before expiry to stay uninterrupted</li>
         </ul>
-        <a href="contact.php" class="btn ghost block">Talk to us</a>
+        <a href="contact.php" class="btn ghost block">Ask for a licence key</a>
       </div>
     </div>
   </div>
@@ -56,20 +56,24 @@ require __DIR__ . '/inc/header.php';
   <div class="wrap prose">
     <div class="section-head reveal">
       <div class="eyebrow">Questions</div>
-      <h2>What is and is not billed in Version 1.</h2>
+      <h2>How trial and licence work.</h2>
     </div>
     <div class="faq">
       <div class="faq-item">
-        <h3>Is this a yearly licence like Inventor iProperties Manager?</h3>
-        <p>Not in Version 1. That product is a per-computer annual key. EasyReportCreator Version 1 is a delivered web app for the agreed Plant 3D workflow. A later retail licence can be designed if you want to sell it the same way.</p>
+        <h3>Is this the same model as PropertiesManager?</h3>
+        <p>Yes. EasyReportCreator uses a <strong>7-day trial</strong> and then a <strong>1-year licence / use</strong>, matching PropertiesManager’s commercial shape. Pricing for the annual key is arranged with TSPD.</p>
       </div>
       <div class="faq-item">
-        <h3>Does the public site include hosting of my DCF?</h3>
-        <p>No. easyreportcreator.com is the product site. The report app runs on a PC or intranet machine that can see your project folder. Public cloud hosting is a separate package.</p>
+        <h3>What happens when the trial ends?</h3>
+        <p>The report app shows a clear expired screen. Upload, lists, and Excel export stay locked until you activate a 1-year licence key. You can still log in and enter a key.</p>
       </div>
       <div class="faq-item">
-        <h3>Can we add write-back later?</h3>
-        <p>Yes. User-defined properties only, AutoCAD closed, preview and approval — quoted as a Pro package (about 40–65 hours).</p>
+        <h3>Is there a desktop installer?</h3>
+        <p>Not yet. A desktop / no-upload option is deferred. The product today is the hosted web app on STRATO.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Where do I get a licence key?</h3>
+        <p>Contact <a href="mailto:support@tspd.nl">support@tspd.nl</a> or use the contact form. Keys activate in the report app under Licence.</p>
       </div>
     </div>
   </div>

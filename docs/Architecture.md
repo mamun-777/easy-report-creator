@@ -2,12 +2,14 @@
 
 | Field | Value |
 |---|---|
-| Status | Locked for Version 1 (90–100 h) — **updated Tue 1 Sep 2026** |
+| Status | Core V1 landed Sep 2026; **licence/trial sprint Tue 15 – Fri 18 Sep** (finish **Fri 18 Sep 2026**) |
 | Domain | **https://easyreportcreator.com** |
 | Hosting | STRATO (www.strato.nl) |
 | Theme | **Light only** (no night / dark mode) |
 | Visual reference | [propertiesmanager.nl](https://www.propertiesmanager.nl/) layout and type; light palette |
 | **V1 deployment** | **Web app on STRATO** — user uploads `ProcessPower.dcf` |
+| **Licensing (FB-003)** | **7-day trial** + **1-year licence/use** (same commercial shape as PropertiesManager) |
+| **Desktop** | **Wait** — deferred until Jan asks |
 
 This document records the production shape of the product.
 
@@ -22,7 +24,9 @@ This document records the production shape of the product.
 
 Plant 3D does **not** need to be running. The `.dcf` file is SQLite and is usually only a few MB (Rhenen sample ~3.3 MB).
 
-**Later option (not V1):** desktop / intranet app with **no upload** for companies that must keep project data fully on-site (may require Windows code signing).
+**Later option (deferred — Jan FB-003):** desktop / intranet app with **no upload** for companies that must keep project data fully on-site (may require Windows code signing). **Do not build until Jan asks.**
+
+**Commercial model (FB-003):** public pricing and access follow PropertiesManager — **7-day trial**, then **1-year licence/use** on the hosted web app.
 
 ---
 
@@ -31,8 +35,9 @@ Plant 3D does **not** need to be running. The `.dcf` file is SQLite and is usual
 | Option | Verdict |
 |---|---|
 | Local Python only + PHP marketing site | Superseded for V1 after client decision (Tue 1 Sep) |
-| Desktop installer + code signing | Deferred — later package if required |
-| **PHP report engine on STRATO + DCF upload** | **Chosen for V1** |
+| Desktop installer + code signing | **Deferred** — Jan asked to wait (FB-003) |
+| **PHP report engine on STRATO + DCF upload** | **Chosen** |
+| **7-day trial + 1-year licence** | **In scope from Fri 11 Sep** (FB-003 / WP11) |
 
 STRATO shared hosting runs PHP 8 (`pdo_sqlite`, `zip`, FastCGI). The report engine under `website/inc/plant3d/` mirrors the proven Python SQL/templates/Excel behaviour.
 

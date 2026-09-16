@@ -3,20 +3,24 @@
 | Field | Value |
 |---|---|
 | Start | **Wednesday 19 August 2026** |
-| Finish | **Thursday 10 September 2026** |
-| Deliverable budget | **100 hours** (WP total — unchanged) |
-| Upwork calendar | **17 working days × 8 h = 136 h** (3 weeks + 2 days) |
-| Week shape | **5 working days per week**, Mon–Fri blocks (Wed-start); **+2 days** Wed 9 Sep + Thu 10 Sep |
+| Finish (extended) | **Friday 18 September 2026** |
+| Original V1 finish | Thursday 10 September 2026 (core lists + STRATO web app) |
+| Deliverable budget | **100 h** core + **WP11–WP12 32 h** (trial / 1-year licence) = **132 h** |
+| Upwork calendar | **23 working days × 8 h = 184 h** (was 17 × 8 = 136 h; Week 4 compressed) |
+| Week shape | **5 working days per week**, Mon–Fri; weekends off |
 | Daily pace | **8 h every working day** (4 h AM + 4 h PM on Upwork) |
-| **Deployment (locked Tue 1 Sep)** | **Web app on STRATO** — user **uploads** `ProcessPower.dcf`; no desktop installer / code signing for V1 |
+| **Deployment** | **Web app on STRATO** — upload `ProcessPower.dcf` |
+| **FB-003 (Sep 2026)** | **7-day trial** + **1-year licence** (PropertiesManager-aligned). **Desktop = wait** (deferred). |
+| **Licence sprint** | **Tue 15 – Fri 18 Sep** (4 × 8 h) — complete trial + licensing setup |
 
-Each week is a **5-day block** (Wed → Tue) because the project starts mid-week. Weekends are always off. **Wed 9 Sep** and **Thu 10 Sep** are extra working days for STRATO hosted-app deploy and handover.
+Core V1 (lists, Excel, multi-project properties, header) landed by **Thu 10 / Fri 11 Sep**.  
+**Trial/licence must be finished in four working days starting Tue 15 Sep** (handover **Fri 18 Sep**).
 
 Upwork copy-paste lines: **`Upwork-Time-Log.md`** and **section 4** below (≤ 120 characters each).
 
 ---
 
-## 1. Hour budget (100 h deliverable — unchanged)
+## 1. Hour budget
 
 | WP | Deliverable | Hours |
 |---|---|---:|
@@ -29,26 +33,27 @@ Upwork copy-paste lines: **`Upwork-Time-Log.md`** and **section 4** below (≤ 1
 | WP7 | English light web UI (propertiesmanager.nl format) | **12** |
 | WP8 | **STRATO hosted web app** (DCF upload) + easyreportcreator.com + HTTPS | **10** |
 | WP9 | Short user guide | **3** |
-| WP10 | Acceptance on sample + one feedback round | **7** |
+| WP10 | Acceptance on sample + feedback (FB-001 / FB-002) | **7** |
+| WP11 | **7-day trial + 1-year licence** (PropertiesManager-aligned) | **24** |
+| WP12 | Pricing/site copy + licence UAT / handover | **8** |
 | — | Coordination / check-ins | **2** |
-| | **Total** | **100** |
-
-The **136 h calendar** (17 × 8 h) includes the **+2 days** (Wed 9 Sep + Thu 10 Sep) for STRATO deploy, upload flow hardening, and handover while you log a full 8 h day on Upwork every working day.
+| | **Total (extended)** | **132** |
 
 ---
 
-## 2. Weekly view (3 × 5 days + 1 day × 8 h)
+## 2. Weekly view
 
 | Week | Dates (working days) | Upwork h | Deliverable focus |
 |---|---|---:|---|
 | **1** | Wed 19 – Tue 25 Aug | **40** | Architecture, PHP site, Project Details header |
 | **2** | Wed 26 Aug – Tue 1 Sep | **40** | Column picker, templates, Excel, first lists |
-| **3** | Wed 2 – **Thu 10 Sep** | **56** | Remaining lists, light UI, **STRATO web app + DCF upload**, docs, UAT / handover |
-| | | **136** | **100 h** scope complete by **Thu 10 Sep** |
+| **3** | Wed 2 – **Thu 10 Sep** | **56** | Lists, UI, STRATO deploy, UAT / first handover |
+| **4** | **Fri 11 – Fri 18 Sep** | **48** | FB-003: trial + annual licence (4-day build Tue–Fri) |
+| | | **184** | Extended finish **Fri 18 Sep** |
 
 ---
 
-## 3. Daily view (16 × 8 h)
+## 3. Daily view
 
 ### Week 1 — Wed 19 – Tue 25 Aug (40 h)
 
@@ -80,7 +85,21 @@ The **136 h calendar** (17 × 8 h) includes the **+2 days** (Wed 9 Sep + Thu 10 
 | **Mon 7 Sep** | 8 | WP7, WP8 | Finish light UI. Flow polish: upload → list → columns → preview → export. |
 | **Tue 8 Sep** | 8 | WP8 | Deploy hosted web app on STRATO. DCF upload, session storage, HTTPS smoke-test. |
 | **Wed 9 Sep** | 8 | WP8–WP10 | Deploy notes, user guide (upload workflow). Acceptance via web upload. |
-| **Thu 10 Sep** | 8 | WP10 / FB-001 | UAT-2: multi-project Engineering Items properties (Jan feedback). Final polish + handover as agreed. |
+| **Thu 10 Sep** | 8 | WP10 / FB-001 | UAT-2: multi-project Engineering Items properties (Jan feedback). |
+
+### Week 4 — Fri 11 – Fri 18 Sep (48 h) · FB-003 licence / trial
+
+| Date | h | WP | Work |
+|---|---:|---|---|
+| **Fri 11 Sep** | 8 | WP10 / FB-002 | Header from live Project Details. Confirm with Jan. Log FB-003 scope. |
+| **Mon 14 Sep** | 8 | WP11 | Prep: licence model notes + company schema sketch (PropertiesManager-aligned). |
+| **Tue 15 Sep** | 8 | WP11 | **Day 1/4:** Trial + licence data model; 7-day trial on register; UI days-remaining banner. |
+| **Wed 16 Sep** | 8 | WP11 | **Day 2/4:** Enforce trial/licence on report API + UI; expired-trial screen. |
+| **Thu 17 Sep** | 8 | WP11 | **Day 3/4:** 1-year licence activation (key/admin); account status; start Pricing copy. |
+| **Fri 18 Sep** | 8 | WP11, WP12 | **Day 4/4:** Pricing/Download pages; full smoke-test; docs. **Handover lock.** |
+
+**Sprint rule:** Trial + licensing system **complete by end of Fri 18 Sep** (four days from Tue 15).  
+**Deferred (Jan):** desktop / no-upload installer — not in this sprint.
 
 ---
 
@@ -105,29 +124,36 @@ The **136 h calendar** (17 × 8 h) includes the **+2 days** (Wed 9 Sep + Thu 10 
 | Tue 8 Sep | 8 | Remote VPS: IIS site, PHP 8.3 FastCGI, 80 MB uploads, session cleanup. | Deployed to STRATO; smoke-test OK. DNS/HTTPS when A-record ready. |
 | Wed 9 Sep | 8 | Deploy notes + short user guide (upload workflow). | Acceptance on MN-P-RHN-PID-0001 via web upload. Package for Jan feedback. |
 | Thu 10 Sep | 8 | FB-001: live property catalogue from DCF (any project). | Verify on 2nd sample + handover / notes for Jan. |
+| Fri 11 Sep | 8 | FB-002: header values from uploaded Project Details. | Deploy header fix; confirm with Jan; note FB-003 scope. |
+| Mon 14 Sep | 8 | WP11 prep: trial + 1-year licence model (PropertiesManager). | Company licence schema sketch + gate design. |
+| Tue 15 Sep | 8 | Day 1/4: licence DB fields; 7-day trial on register. | Trial banner + days-remaining in report UI. |
+| Wed 16 Sep | 8 | Day 2/4: enforce expiry on report API (upload/lists/export). | Expired-trial screen + renew messaging. |
+| Thu 17 Sep | 8 | Day 3/4: 1-year licence activation (key or admin grant). | Account status + Pricing page draft. |
+| Fri 18 Sep | 8 | Day 4/4: Pricing/Download pages; end-to-end smoke-test. | Docs + deploy. **Handover lock.** Desktop deferred. |
 
 ---
 
 ## 5. Domain and STRATO (inside WP8)
 
-**Deployment model:** single **web app on STRATO** — users upload `ProcessPower.dcf` in the browser (typical file size a few MB; sample ~3.3 MB). No desktop installer or Windows code signing for V1.
+**Deployment model:** single **web app on STRATO** — users upload `ProcessPower.dcf` in the browser (typical file size a few MB; sample ~3.3 MB). No desktop installer or Windows code signing while Jan waits on desktop (FB-003).
 
 1. **DNS** — point easyreportcreator.com (and www) at the STRATO webspace.
 2. **SSL** — enable HTTPS in the STRATO panel.
 3. **PHP** — PHP 8.x, `DirectoryIndex index.php`; tune `upload_max_filesize` / `post_max_size` for `.dcf` uploads.
 4. **Deploy** — public pages + report engine on STRATO (upload → analyse → preview → Excel export).
 5. **Privacy** — session-based storage; auto-delete uploaded `.dcf` after use (document in user guide).
+6. **Licence (WP11)** — 7-day trial then 1-year licence/use, aligned with PropertiesManager.
 
 ---
 
 ## 6. Daily rhythm
 
 1. Log **8 h on Upwork** every working day (4 h AM + 4 h PM).
-2. Prove engine changes on `samples/MN-P-RHN-PID-0001` the same day (local dev until STRATO deploy on Tue 8 Sep).
-3. Check-ins: end of **Wed 26 Aug**, **Wed 2 Sep**, **Thu 10 Sep** (handover).
+2. Prove engine changes on sample DCFs the same day.
+3. Check-ins: end of **Wed 26 Aug**, **Wed 2 Sep**, **Thu 10 Sep** (core), **Fri 18 Sep** (licence/trial handover).
 
 ---
 
 ## 7. Slip rule
 
-If scope slips, use **Tue 8 – Thu 10 Sep** before dropping WP3 (property selection). Do not cut the 8 h working-day shape. The **+2 days (Wed 9 + Thu 10 Sep)** are reserved for STRATO hosted-app deploy and handover.
+Licence/trial **must ship by Fri 18 Sep**. If blocked, same-day overtime only — do **not** slip into the week of 21 Sep unless Jan agrees. Do **not** start desktop work until Jan asks. Do not cut the 8 h working-day shape.

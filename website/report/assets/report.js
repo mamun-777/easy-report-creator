@@ -98,6 +98,10 @@ async function api(action, options = {}) {
     location.href = "login.php";
     throw new Error("Please sign in to continue.");
   }
+  if (res.status === 402) {
+    location.href = "licence.php";
+    throw new Error("Licence required.");
+  }
   if (options.blob) {
     if (!res.ok) {
       let detail = res.statusText;
@@ -116,6 +120,28 @@ async function api(action, options = {}) {
     throw new Error(data.detail || res.statusText || "Request failed");
   }
   return data;
+}
+
+function renderLicenceBanner(licence) {
+  const banner = $("licence-banner");
+  const chip = $("licence-chip");
+  if (chip && licence) {
+    const days =
+      licence.days_remaining != null ? ` · ${licence.days_remaining}d` : "";
+    chip.textContent = `${licence.label || licence.status || "Licence"}${days}`;
+  }
+  if (!banner || !licence) return;
+  if (licence.status === "trial" && licence.can_use) {
+    banner.hidden = false;
+    banner.classList.remove("is-licensed");
+    banner.innerHTML = `<strong>7-day trial</strong><span>${escapeHtml(
+      licence.days_remaining != null ? `${licence.days_remaining} day(s) remaining` : licence.label || "Trial"
+    )}</span><a class="licence-banner-link" href="licence.php">Activate 1-year licence</a>`;
+  } else if (licence.status === "active" && licence.can_use) {
+    banner.hidden = true;
+  } else if (!licence.can_use) {
+    location.href = "licence.php";
+  }
 }
 
 function setCompanyActionsEnabled(enabled) {
@@ -817,8 +843,13 @@ async function boot() {
     location.href = "login.php";
     return;
   }
+  if (me.licence && me.licence.can_use === false) {
+    location.href = "licence.php";
+    return;
+  }
   currentUser = me.user;
   companyProfile = me.profile;
+  renderLicenceBanner(me.licence);
   $("company-chip").textContent = currentUser.company_name;
   $("user-label").textContent = currentUser.display_name;
   if (me.has_logo) await refreshLogo();

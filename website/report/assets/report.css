@@ -873,3 +873,128 @@ menu {
     justify-content: flex-start;
   }
 }
+
+/* FB-003 — trial / licence */
+.licence-chip {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 10px;
+  padding: 2px 8px;
+  border: 1px solid var(--line, #d5dbe3);
+  border-radius: 4px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  color: var(--muted, #5b6573);
+  text-decoration: none;
+  white-space:nowrap;
+}
+.licence-chip:hover {
+  color: var(--ink, #1a2230);
+  border-color: var(--accent, #2f6fed);
+}
+.licence-status {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 22px;
+  padding: 12px 14px;
+  border: 1px solid var(--line, #d5dbe3);
+  border-radius: 6px;
+  background: #f7f9fc;
+}
+.licence-status > div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 8px;
+  font-size: 13px;
+}
+.licence-status dt {
+  margin: 0;
+  color: var(--muted, #5b6573);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.licence-status dd {
+  margin: 0;
+  font-weight: 600;
+}
+.licence-ok {
+  color: #0f6b3a;
+  font-size: 13px;
+  margin: 0 0 10px;
+}
+.licence-banner {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding: 0.55rem 1.25rem;
+  background: var(--warn-soft);
+  border-bottom: 1px solid rgba(183, 121, 31, 0.25);
+  color: #7a5214;
+  font-size: 0.92rem;
+}
+.licence-banner.is-licensed {
+  background: var(--success-soft);
+  border-bottom-color: rgba(26, 143, 106, 0.25);
+  color: #0f6b4c;
+}
+.licence-banner-link {
+  margin-left: auto;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.auth-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  height: auto;
+  max-height: none;
+  overflow: auto;
+  padding: 2rem 1rem;
+}
+.licence-panel {
+  width: min(480px, 100%);
+}
+.licence-body {
+  padding: 1.25rem 1.35rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.licence-body h1 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.licence-body .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+.licence-body .field input {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+.licence-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+.licence-error {
+  color: var(--danger);
+  font-size: 0.9rem;
+  margin: 0;
+}

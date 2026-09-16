@@ -24,7 +24,13 @@ final class ErcAuth
             'CREATE TABLE IF NOT EXISTS companies (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
-                created_at TEXT NOT NULL
+                created_at TEXT NOT NULL,
+                trial_started_at TEXT,
+                trial_ends_at TEXT,
+                licence_status TEXT NOT NULL DEFAULT \'trial\',
+                licence_key TEXT,
+                licence_activated_at TEXT,
+                licence_ends_at TEXT
             )'
         );
         $pdo->exec(
@@ -109,8 +115,12 @@ final class ErcAuth
         $now = gmdate('c');
         $pdo->beginTransaction();
         try {
-            $insCo = $pdo->prepare('INSERT INTO companies (name, created_at) VALUES (?, ?)');
-            $insCo->execute([$companyName, $now]);
+            $insCo = $pdo->prepare(
+                'INSERT INTO companies (name, created_at, trial_started_at, trial_ends_at, licence_status)
+                 VALUES (?, ?, ?, ?, ?)'
+            );
+            $trialEnd = gmdate('c', strtotime($now . ' +' . ErcLicence::TRIAL_DAYS . ' days'));
+            $insCo->execute([$companyName, $now, $now, $trialEnd, 'trial']);
             $companyId = (int) $pdo->lastInsertId();
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $insUser = $pdo->prepare(
@@ -126,11 +136,12 @@ final class ErcAuth
 
         self::loginSession($userId, $companyId);
         erc_company_ensure_dirs($companyId);
-        return ['user' => self::currentUser()];
+        ErcLicence::migrate();
+        return ['user' => self::currentUser(), 'licence' => ErcLicence::statusForCompany($companyId)];
     }
 
     /**
-     * @return array{user: array{id:int,email:string,display_name:string,company_id:int,company_name:string}}
+     * @return array{user: array{id:int,email:string,display_name:string,company_id:int,company_name:string}, licence?: array<string,mixed>}
      */
     public static function login(string $email, string $password): array
     {
@@ -143,9 +154,11 @@ final class ErcAuth
         if (!$row || !password_verify($password, (string) $row['password_hash'])) {
             throw new InvalidArgumentException('Invalid email or password.');
         }
-        self::loginSession((int) $row['id'], (int) $row['company_id']);
-        erc_company_ensure_dirs((int) $row['company_id']);
-        return ['user' => self::currentUser()];
+        $companyId = (int) $row['company_id'];
+        self::loginSession((int) $row['id'], $companyId);
+        erc_company_ensure_dirs($companyId);
+        ErcLicence::ensureCompanyTrial($companyId);
+        return ['user' => self::currentUser(), 'licence' => ErcLicence::statusForCompany($companyId)];
     }
 
     public static function logout(): void

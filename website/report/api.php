@@ -6,10 +6,19 @@ require_once dirname(__DIR__) . '/inc/bootstrap.php';
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 
 $publicActions = ['login', 'register', 'me', 'logout'];
+/** Allowed when trial/licence expired (activate / read status / profile). */
+$licenceExemptActions = ['me', 'logout', 'login', 'register', 'profile', 'activate_licence', 'licence'];
 
 try {
     if (!in_array($action, $publicActions, true)) {
         ErcAuth::requireUser();
+    }
+    if (
+        ErcAuth::currentUser()
+        && !in_array($action, $licenceExemptActions, true)
+        && !in_array($action, $publicActions, true)
+    ) {
+        ErcLicence::requireAccess();
     }
 
     match ($action) {
@@ -17,6 +26,8 @@ try {
         'login' => handle_login(),
         'register' => handle_register(),
         'logout' => handle_logout(),
+        'licence' => handle_licence(),
+        'activate_licence' => handle_activate_licence(),
         'profile' => handle_profile(),
         'templates' => erc_json(['ok' => true, 'templates' => ErcTemplates::listTemplates()]),
         'template' => handle_template_get(),
@@ -33,6 +44,8 @@ try {
         'clear' => handle_clear(),
         default => erc_error('Unknown action', 404),
     };
+} catch (ErcLicenceException $e) {
+    erc_json(['ok' => false, 'detail' => $e->getMessage(), 'licence' => $e->licence], 402);
 } catch (InvalidArgumentException $e) {
     erc_error($e->getMessage(), 400);
 } catch (Throwable $e) {
@@ -43,17 +56,37 @@ function handle_me(): never
 {
     $user = ErcAuth::currentUser();
     if (!$user) {
-        erc_json(['ok' => true, 'authenticated' => false, 'user' => null]);
+        erc_json(['ok' => true, 'authenticated' => false, 'user' => null, 'licence' => null]);
     }
     $profile = erc_load_company_profile();
+    $licence = ErcLicence::statusForCompany((int) $user['company_id']);
     erc_json([
         'ok' => true,
         'authenticated' => true,
         'user' => $user,
         'profile' => $profile,
+        'licence' => $licence,
         'has_logo' => erc_logo_path() !== null,
         'has_project' => erc_current_dcf() !== null,
     ]);
+}
+
+function handle_licence(): never
+{
+    ErcAuth::requireUser();
+    $user = ErcAuth::currentUser();
+    erc_json(['ok' => true, 'licence' => ErcLicence::statusForCompany((int) $user['company_id'])]);
+}
+
+function handle_activate_licence(): never
+{
+    if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+        erc_error('POST required', 405);
+    }
+    $user = ErcAuth::requireUser();
+    $body = erc_json_body();
+    $licence = ErcLicence::activate((int) $user['company_id'], (string) ($body['licence_key'] ?? ''));
+    erc_json(['ok' => true, 'licence' => $licence]);
 }
 
 function handle_login(): never

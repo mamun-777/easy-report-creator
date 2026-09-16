@@ -21,10 +21,14 @@ require_once __DIR__ . '/plant3d/Templates.php';
 require_once __DIR__ . '/plant3d/Project.php';
 require_once __DIR__ . '/plant3d/Excel.php';
 require_once __DIR__ . '/plant3d/Auth.php';
+require_once __DIR__ . '/plant3d/Licence.php';
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
+
+// FB-003: ensure licence columns exist early
+ErcLicence::migrate();
 
 function erc_json(array $payload, int $status = 200): never
 {

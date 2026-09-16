@@ -1,9 +1,11 @@
 # EasyReportCreator — Upwork time log
 
-**Start:** Wed 19 Aug 2026 · **Finish:** Thu 10 Sep 2026  
-**Calendar:** 17 working days × **8 h** = 136 h (3 weeks × 5 days + **2 days**)  
-**Deliverable budget:** 100 h (fixed-price scope)  
-**Deployment:** **Web app on STRATO** — user uploads `ProcessPower.dcf` (locked with client Tue 1 Sep)
+**Start:** Wed 19 Aug 2026 · **Finish (extended):** Fri 18 Sep 2026  
+**Calendar:** 23 working days × **8 h** = 184 h (core through Thu 10 Sep + Week 4 licence/trial)  
+**Deliverable budget:** 132 h (100 h core + WP11–WP12 trial/licence)  
+**Deployment:** **Web app on STRATO** — user uploads `ProcessPower.dcf`  
+**FB-003:** 7-day trial + 1-year licence (PropertiesManager-aligned); **desktop wait**  
+**Licence sprint:** **Tue 15 – Fri 18 Sep** (4 days) — complete setup by Fri 18
 
 Log **4 h AM + 4 h PM** each working day. Each line **≤ 120 characters**.
 
@@ -148,3 +150,53 @@ Full schedule: `Delivery-Schedule.md`
 **AM (4 h):** Multi-project property catalogue from Engineering Items (Jan FB-001).
 
 **PM (4 h):** Verify on second sample DCF + handover notes / deploy polish.
+
+---
+
+## Week 4 · Fri 11 – Fri 18 Sep · WP11 / WP12 · trial + licence (FB-003)
+
+### Fri 11 Sep · 8 h · WP10 / FB-002
+
+**AM (4 h):** Fix header to use live Project Details from uploaded DCF.
+
+**PM (4 h):** Deploy header fix; Jan confirms OK; log FB-003 (trial, pricing, desktop wait).
+
+---
+
+### Mon 14 Sep · 8 h · WP11 · prep
+
+**AM (4 h):** Licence model notes: 7-day trial + 1-year licence (PropertiesManager-aligned).
+
+**PM (4 h):** Company licence schema sketch + report-app gate design.
+
+---
+
+### Tue 15 Sep · 8 h · WP11 · Day 1/4
+
+**AM (4 h):** Licence DB fields; start 7-day trial on company register.
+
+**PM (4 h):** Trial banner + days-remaining in report UI.
+
+---
+
+### Wed 16 Sep · 8 h · WP11 · Day 2/4
+
+**AM (4 h):** Enforce expiry on report API (upload / lists / export).
+
+**PM (4 h):** Expired-trial screen + renew / activate licence page.
+
+---
+
+### Thu 17 Sep · 8 h · WP11 · Day 3/4
+
+**AM (4 h):** 1-year licence activation (key or admin grant) — polish + account status.
+
+**PM (4 h):** Pricing page draft (7-day trial + annual licence); Download CTAs.
+
+---
+
+### Fri 18 Sep · 8 h · WP11 / WP12 · Day 4/4 · handover
+
+**AM (4 h):** Finish Pricing/Download pages; end-to-end smoke-test trial + licensed.
+
+**PM (4 h):** Docs + deploy. **Handover lock.** Desktop remains deferred.

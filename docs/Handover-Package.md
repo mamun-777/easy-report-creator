@@ -43,12 +43,13 @@ Automated web acceptance against https://easyreportcreator.com/report passed:
 
 Script: `scripts/acceptance_web_upload.py`
 
-## Open QA (UAT-2)
+## Open QA / scope
 
 | ID | Issue | Status |
 |---|---|---|
-| [FB-001](qa/FB-001-engineering-items-properties.md) | Other projects: unknown properties / errors. Full Engineering Items property pick (standard + user-defined). Sample: P220049 Morssinkhof. | **Verify** — live deploy 2026-09-10 |
-| [FB-002](qa/FB-002-header-project-details.md) | Header not updating with uploaded project / client information. | **Verify** — live deploy 2026-09-11 |
+| [FB-001](qa/FB-001-engineering-items-properties.md) | Multi-project Engineering Items properties | **Verify** — live 2026-09-10 |
+| [FB-002](qa/FB-002-header-project-details.md) | Header from uploaded project | **Closed** — Jan confirmed |
+| [FB-003](qa/FB-003-trial-licence-pricing.md) | 7-day trial + 1-year licence (PropertiesManager); desktop wait | **In progress** — Days 1–3 done; Day 4 Fri 18 |
 
 Vitens / MN-P-RHN-PID-0001 remains the **regression** sample for list counts only.
 
@@ -58,14 +59,14 @@ Vitens / MN-P-RHN-PID-0001 remains the **regression** sample for list counts onl
 |---|---|
 | `docs/User-Guide.md` | Short upload → list → export guide |
 | `docs/STRATO-Deploy.md` | Server / IIS / PHP / privacy notes |
-| `docs/Delivery-Schedule.md` | Calendar through Thu 10 Sep handover |
+| `docs/Delivery-Schedule.md` | Calendar through **Fri 18 Sep** (licence/trial 4-day sprint) |
 
-## Out of V1 scope (deferred)
+## Out of current scope (deferred)
 
 - Excel import → write back to DCF  
 - Dutch UI toggle  
-- Desktop / no-upload installer  
+- **Desktop / no-upload installer** (Jan: wait)  
 
 ## Feedback
 
-Please send comments on Upwork (bugs, wording, missing columns, ICT privacy questions). Final polish and handover lock is scheduled for **Thu 10 Sep**.
+Please send comments on Upwork (bugs, trial/licence wording, ICT questions). Licence/trial handover lock is scheduled for **Fri 18 Sep**.
