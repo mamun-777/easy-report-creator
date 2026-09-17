@@ -119,6 +119,7 @@ projSymbolStyle.dwg
 .env
 .env.*
 !.env.example
+website/inc/config.local.php
 *.pem
 *.key
 *_ssh_*.py

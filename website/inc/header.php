@@ -5,7 +5,7 @@ require_once __DIR__ . '/config.php';
 
 $page = $page ?? 'home';
 $title = $title ?? SITE['name'];
-$description = $description ?? 'Friendlier Plant 3D lists in Excel — without AutoCAD Report Creator.';
+$description = $description ?? 'Excel lists from ProcessPower.dcf — Plant 3D is not required. Friendlier alternative to AutoCAD Report Creator.';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ $description = $description ?? 'Friendlier Plant 3D lists in Excel — without A
 <title><?= h($title) ?></title>
 <meta name="description" content="<?= h($description) ?>">
 <link rel="stylesheet" href="assets/fonts.css?v=20260908b">
-<link rel="stylesheet" href="assets/styles.css?v=20260908b">
+<link rel="stylesheet" href="assets/styles.css?v=20260917g">
 </head>
 <body>
 

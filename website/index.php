@@ -1,31 +1,31 @@
 <?php
 declare(strict_types=1);
 $page = 'home';
-$title = 'EasyReportCreator — Plant 3D lists without Report Creator';
-$description = 'Open a Plant 3D project, pick the properties you need, and issue valve, equipment, line and component lists to Excel — with a company header and revision table.';
+$title = 'EasyReportCreator — Excel lists from ProcessPower.dcf';
+$description = 'Upload ProcessPower.dcf and issue valve, equipment, line and component lists to Excel. Plant 3D is not required — only the .dcf file.';
 require __DIR__ . '/inc/header.php';
 ?>
 
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">For AutoCAD Plant 3D</div>
+      <div class="eyebrow">From ProcessPower.dcf</div>
       <h1>Every list.<br>Every property.<br><span class="accent">One export.</span></h1>
-      <p class="sub">EasyReportCreator reads the Plant 3D project database, lets you choose the columns that belong on the issued list, and writes English Excel with your logo, title block and revision table — without opening Report Creator.</p>
+      <p class="sub">EasyReportCreator reads your <strong>ProcessPower.dcf</strong> file, lets you choose the columns that belong on the issued list, and writes English Excel with your logo, title block and revision table. <strong>Plant 3D is not needed</strong> — only the .dcf file.</p>
       <div class="hero-ctas">
-        <a href="download.php" class="btn">Run the app</a>
+        <a href="download.php" class="btn">Open the app</a>
         <a href="product.php" class="btn ghost">See how it works</a>
       </div>
       <div class="compat-row">
-        <span><i class="dot"></i>ProcessPower.dcf</span>
+        <span><i class="dot"></i>ProcessPower.dcf only</span>
         <span><i class="dot"></i>Excel issue (one-way)</span>
-        <span><i class="dot"></i>Company templates</span>
+        <span><i class="dot"></i>7-day trial</span>
       </div>
     </div>
 
     <div class="panel reveal">
       <div class="panel-bar">
-        <span class="file">MN-P-RHN-PID-0001 — Valve List</span>
+        <span class="file">Sample project — Valve List</span>
         <div class="panel-dots"><i></i><i></i><i></i></div>
       </div>
       <div class="prop-row">
@@ -50,7 +50,7 @@ require __DIR__ . '/inc/header.php';
       </div>
       <div class="prop-row">
         <span class="key">Export</span>
-        <span class="val val new">MN-P-RHN-PID-0001-AL.xlsx</span>
+        <span class="val val new">sample-project-AL.xlsx</span>
         <span class="tag">Issued</span>
       </div>
       <div class="panel-footer">
@@ -63,7 +63,7 @@ require __DIR__ . '/inc/header.php';
 
 <div class="trust">
   <div class="wrap">
-    <span>Built for engineering teams issuing P&amp;ID lists from Plant 3D</span>
+    <span>Built for engineering teams issuing P&amp;ID lists from ProcessPower.dcf</span>
     <span>NL / EU — <?= h(SITE['domain']) ?></span>
   </div>
 </div>
@@ -100,8 +100,8 @@ require __DIR__ . '/inc/header.php';
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">In practice</div>
-      <h2>The Rhenen sample, issued correctly.</h2>
-      <p>Acceptance is against Plant 3D project MN-P-RHN-PID-0001 (Productiebedrijf Rhenen). Open the folder, choose a list, export.</p>
+      <h2>The sample project, issued correctly.</h2>
+      <p>Acceptance uses sample project MN-P-RHN-PID-0001. Upload the .dcf, choose a list, export — Plant 3D does not need to be installed or running.</p>
     </div>
     <div class="diff-card reveal">
       <div class="diff-row"><span class="k">Project name</span><span><span class="v-new">MN-P-RHN-PID-0001</span></span></div>
@@ -120,31 +120,31 @@ require __DIR__ . '/inc/header.php';
 <section id="download">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">Run it where the project lives</div>
-      <h2>The app runs next to Plant 3D, not in the browser cloud.</h2>
-      <p>Start the local web app on a PC that can see the project folder. The public site is only the product home — the lists come from your DCF.</p>
+      <div class="eyebrow">Hosted web app</div>
+      <h2>Upload the .dcf in your browser. A local app will follow later.</h2>
+      <p>Today EasyReportCreator runs as a hosted web app: upload <code>ProcessPower.dcf</code>, preview lists, export Excel. A local / desktop app may follow later — it is not available yet.</p>
     </div>
     <div class="download-card reveal">
       <div class="download-card-main">
-        <div class="eyebrow">Local web app</div>
-        <h2>EasyReportCreator for Windows</h2>
+        <div class="eyebrow">Web app</div>
+        <h2>EasyReportCreator online</h2>
         <p class="download-meta">
           <span>Version <?= h(SITE['product_version']) ?></span>
-          <span>| Python runtime bundled in the run script</span>
-          <span>| Plant 3D project folder</span>
+          <span>| Browser</span>
+          <span>| ProcessPower.dcf</span>
         </p>
         <div class="download-actions">
-          <a class="btn" href="download.php">Install instructions</a>
-          <a href="product.php" class="btn ghost">Requirements</a>
+          <a class="btn" href="report/register.php">Start 7-day trial</a>
+          <a href="download.php" class="btn ghost">Open the app</a>
         </div>
       </div>
       <div class="download-card-side">
-        <div class="key">AFTER DOWNLOAD</div>
+        <div class="key">STEPS</div>
         <ul>
-          <li>Unzip on the PC that can see the project</li>
-          <li>Run <code>run.bat</code></li>
-          <li>Open the project folder (sample: MN-P-RHN-PID-0001)</li>
-          <li>Choose a list, pick columns, export Excel</li>
+          <li>Create an account (7-day trial)</li>
+          <li>Upload ProcessPower.dcf</li>
+          <li>Choose a list → preview rows</li>
+          <li>Export English Excel</li>
         </ul>
       </div>
     </div>
@@ -156,7 +156,7 @@ require __DIR__ . '/inc/header.php';
     <div class="cta reveal">
       <div>
         <h2>Ready to stop fighting Report Creator?</h2>
-        <p>Version 1 is a delivered web app for your Plant 3D environment — English issued lists, company templates, STRATO product site included.</p>
+        <p>EasyReportCreator is a hosted web app for English issued lists and company templates from your <strong>ProcessPower.dcf</strong> — Plant 3D is not required. A local app will follow later.</p>
       </div>
       <a href="contact.php" class="btn">Talk to us</a>
     </div>

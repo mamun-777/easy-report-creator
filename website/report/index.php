@@ -26,7 +26,7 @@ $showTrialBanner = ($licence['status'] ?? '') === 'trial';
   <meta name="color-scheme" content="light" />
   <title>EasyReportCreator — Report app</title>
   <link rel="stylesheet" href="../assets/fonts.css?v=20260908c" />
-  <link rel="stylesheet" href="assets/report.css?v=20260916b" />
+  <link rel="stylesheet" href="assets/report.css?v=20260917a" />
 </head>
 <body data-licence-status="<?= $licenceStatus ?>">
   <?php if ($showTrialBanner): ?>
@@ -64,7 +64,7 @@ $showTrialBanner = ($licence['status'] ?? '') === 'trial';
       <div class="panel-bar"><span class="key">Project</span></div>
       <div class="side-body">
         <div class="project-card" id="project-card">
-          <p class="muted" id="project-meta">No project open. Upload ProcessPower.dcf from your Plant 3D project folder. Plant 3D does not need to be running.</p>
+          <p class="muted" id="project-meta">No project open. Upload ProcessPower.dcf — Plant 3D is not required, only the .dcf file.</p>
         </div>
         <div class="upload-zone" id="upload-zone">
           <p class="upload-zone-title">Drop ProcessPower.dcf here</p>

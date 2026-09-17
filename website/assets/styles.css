@@ -1,6 +1,4 @@
-/* EasyReportCreator — public website (easyreportcreator.com)
-   Same page format as propertiesmanager.nl (nav, hero, panel, features, proof, download, footer).
-   Light-only. Keep :root in sync with /shared/tokens.css (STRATO upload is this folder only). */
+/* EasyReportCreator — public website (easyreportcreator.com). Light theme. */
 
 :root {
   color-scheme: light;
@@ -455,6 +453,102 @@ footer .copy-row {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
+/* Buy / checkout (Moneybird payment-link flow) */
+.buy-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: start;
+  max-width: 920px;
+}
+.buy-form, .buy-summary, .result-card {
+  background: #fff;
+  border: 1px solid var(--line, #d5dbe3);
+  border-radius: 8px;
+  padding: 22px;
+}
+.buy-form .field, .buy-form label.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+.buy-form .field input {
+  border: 1px solid var(--line, #d5dbe3);
+  border-radius: 4px;
+  padding: 9px 10px;
+  font: inherit;
+}
+.buy-form .hint { color: var(--muted); font-size: 12px; }
+.buy-form .req { color: var(--accent); }
+.choice-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.choice-tab {
+  border: 1px solid var(--line, #d5dbe3);
+  background: #fff;
+  border-radius: 4px;
+  padding: 9px 12px;
+  font: inherit;
+  cursor: pointer;
+  color: var(--muted);
+}
+.choice-tab.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.pay-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+.buy-error { color: #b42318; font-size: 13px; margin-top: 10px; }
+.buy-summary h2 { font-family: var(--font-display); margin: 6px 0 16px; }
+.buy-summary dl { display: grid; gap: 10px; margin: 0 0 16px; }
+.buy-summary dl > div { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+.buy-summary dt { color: var(--muted); }
+.buy-summary dd { margin: 0; font-weight: 600; }
+.consent-backdrop {
+  position: fixed; inset: 0; background: rgba(26,34,48,.45);
+  display: grid; place-items: center; padding: 20px; z-index: 40;
+}
+.consent-backdrop[hidden] {
+  display: none !important;
+}
+.consent-card {
+  width: min(440px, 100%);
+  background: #fff;
+  border-radius: 8px;
+  padding: 22px;
+  border: 1px solid var(--line, #d5dbe3);
+  color: var(--text);
+}
+.consent-summary {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text);
+  background: var(--accent-soft);
+  padding: 10px 12px;
+  border-radius: 4px;
+  min-height: 1.4em;
+  word-break: break-word;
+}
+.consent-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+.consent-error {
+  color: #b42318;
+  font-size: 13px;
+  margin: 10px 0 0;
+}
+.result-card { text-align: center; }
+.result-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center; margin: 0 auto 14px;
+  background: var(--accent-soft); color: var(--accent); font-size: 22px;
+}
+
 @media (max-width: 920px) {
   .hero-grid { grid-template-columns: 1fr; padding: 64px 0 72px; }
   nav.links { display: none; }
@@ -469,4 +563,5 @@ footer .copy-row {
   footer .wrap { grid-template-columns: 1fr; gap: 24px; }
   .download-card { grid-template-columns: 1fr; }
   .download-card-side { border-left: none; border-top: 1px solid var(--hairline); }
+  .buy-grid { grid-template-columns: 1fr; }
 }

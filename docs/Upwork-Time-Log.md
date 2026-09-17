@@ -187,16 +187,16 @@ Full schedule: `Delivery-Schedule.md`
 
 ---
 
-### Thu 17 Sep · 8 h · WP11 · Day 3/4
+### Thu 17 Sep · 8 h · WP11 · Day 3–4/4
 
-**AM (4 h):** 1-year licence activation (key or admin grant) — polish + account status.
+**AM (4 h):** Issued-key registry + light-mode licence admin; Moneybird buy/intent flow.
 
-**PM (4 h):** Pricing page draft (7-day trial + annual licence); Download CTAs.
+**PM (4 h):** FB-004 site copy (no STRATO; Plant 3D not required; local later); Pricing/buy; smoke-test + deploy.
 
 ---
 
 ### Fri 18 Sep · 8 h · WP11 / WP12 · Day 4/4 · handover
 
-**AM (4 h):** Finish Pricing/Download pages; end-to-end smoke-test trial + licensed.
+**AM (4 h):** Final smoke-test trial + licensed + admin issue key.
 
-**PM (4 h):** Docs + deploy. **Handover lock.** Desktop remains deferred.
+**PM (4 h):** Docs + handover lock. Desktop remains deferred.

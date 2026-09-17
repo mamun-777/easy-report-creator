@@ -43,7 +43,7 @@ if ($isActive) {
   <meta name="color-scheme" content="light" />
   <title>Licence — EasyReportCreator</title>
   <link rel="stylesheet" href="../assets/fonts.css?v=20260908c" />
-  <link rel="stylesheet" href="assets/report.css?v=20260916b" />
+  <link rel="stylesheet" href="assets/report.css?v=20260917a" />
 </head>
 <body class="auth-body">
   <main class="licence-panel panel">
@@ -72,7 +72,7 @@ if ($isActive) {
       </dl>
 
       <?php if (!$isActive): ?>
-      <p class="muted">Same model as PropertiesManager: a <strong>7-day trial</strong>, then a <strong>1-year licence</strong> for use.</p>
+      <p class="muted">A <strong>7-day trial</strong>, then a <strong>1-year licence</strong> (365 days from activation). Need a key? <a href="../buy.php">Buy online</a>.</p>
       <label class="field">
         <span>Licence key</span>
         <input id="licence-key" type="text" placeholder="ERC-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false" maxlength="32" />
@@ -87,7 +87,7 @@ if ($isActive) {
         <button id="btn-logout" class="btn ghost" type="button">Log out</button>
         <?php endif; ?>
       </div>
-      <p class="side-foot muted">Need a key? Contact <a href="mailto:support@tspd.nl">support@tspd.nl</a>.</p>
+      <p class="side-foot muted">Need a key? <a href="../buy.php">Buy a 1-year licence</a> or contact <a href="mailto:support@tspd.nl">support@tspd.nl</a>.</p>
       <?php else: ?>
       <div class="licence-actions">
         <a class="btn primary" href="index.php">Back to report app</a>

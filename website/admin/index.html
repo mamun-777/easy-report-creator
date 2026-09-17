@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>License Admin — EasyReportCreator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css?v=20260917f">
+</head>
+<body>
+  <div id="login-shell" class="login-shell">
+    <div class="login-glow" aria-hidden="true"></div>
+    <div class="login-card">
+      <div class="login-card-header">
+        <div class="login-brand-row">
+          <div class="brand-mark">ERC</div>
+          <span class="login-product-badge">Web app</span>
+        </div>
+        <h1>License Admin</h1>
+        <p class="login-lead">Manage online licenses, purchases, and customer access for EasyReportCreator.</p>
+      </div>
+
+      <form id="login-form" class="login-form">
+        <div id="login-userpass">
+          <div class="login-field">
+            <label class="field-label" for="login-username">Username</label>
+            <div class="login-input-wrap">
+              <span class="login-input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+              </span>
+              <input id="login-username" type="text" autocomplete="username" placeholder="Your username">
+            </div>
+          </div>
+          <div class="login-field">
+            <label class="field-label" for="login-password">Password</label>
+            <div class="login-input-wrap">
+              <span class="login-input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <input id="login-password" type="password" autocomplete="current-password" placeholder="Your password">
+            </div>
+          </div>
+        </div>
+        <div id="login-masterkey" class="hidden">
+          <div class="login-field">
+            <label class="field-label" for="admin-api-key">Master API key</label>
+            <div class="login-input-wrap">
+              <span class="login-input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <input id="admin-api-key" type="password" autocomplete="current-password" placeholder="Enter the master API key">
+              <button id="toggle-api-key" class="login-toggle-key" type="button" aria-label="Show API key">
+                <svg class="icon-show" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="icon-hide hidden" viewBox="0 0 24 24"><path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c6.5 0 10 7 10 7a17.2 17.2 0 0 1-2.16 3.19"/><path d="M6.11 6.11A17.3 17.3 0 0 0 2 12s3.5 7 10 7a10.8 10.8 0 0 0 5.11-1.28"/><path d="M2 2l20 20"/><path d="M9.88 9.88a3 3 0 0 0 4.24 4.24"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-login full-width" type="submit">Sign in</button>
+        <div class="login-alt">
+          <button id="login-mode-toggle" type="button">Sign in with master API key instead</button>
+        </div>
+      </form>
+      <div id="login-message" class="inline-message hidden"></div>
+    </div>
+  </div>
+
+  <div id="app-shell" class="app-shell hidden">
+    <div id="sidebar-backdrop" class="sidebar-backdrop hidden"></div>
+
+    <aside id="sidebar" class="sidebar" aria-label="Main navigation">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="brand-mark small">ERC</div>
+          <div>
+            <div class="brand-title">License Admin</div>
+            <div class="brand-subtitle">EasyReportCreator</div>
+          </div>
+        </div>
+        <button id="sidebar-close" class="btn btn-icon btn-toolbar sidebar-close mobile-only" type="button" aria-label="Close menu">
+          <svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Main">
+        <button class="nav-item active" data-view="overview" type="button">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          </span>
+          Overview
+        </button>
+        <button class="nav-item" data-view="licenses" type="button">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="3.5"/><path d="M10 12h10.5"/><path d="M18 12v3"/><path d="M20.5 12v3.5"/></svg>
+          </span>
+          Licenses
+        </button>
+        <button class="nav-item" data-view="purchases" type="button">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </span>
+          Purchases
+          <span id="nav-purchases-badge" class="nav-badge hidden">0</span>
+        </button>
+        <button class="nav-item" data-view="customers" type="button">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17.5 14.6c2.4.5 4 2.1 4 4.4"/></svg>
+          </span>
+          Customers
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div id="current-user-chip" class="current-user">
+          <div id="current-user-name" class="current-user-name">admin</div>
+          <div id="current-user-role" class="current-user-role">Administrator</div>
+        </div>
+        <button id="logout-button" class="btn btn-ghost full-width" type="button">Sign out</button>
+      </div>
+    </aside>
+
+    <div class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <button id="menu-toggle" class="btn btn-icon btn-toolbar menu-toggle mobile-only" type="button" aria-label="Open menu">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+          </button>
+          <div>
+            <h1 id="page-title">Overview</h1>
+            <p id="page-subtitle">Monitor licenses and customer access at a glance.</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="refresh-button" class="btn btn-icon btn-toolbar" type="button" title="Refresh">
+            <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+          </button>
+          <button id="create-license-button" class="btn btn-primary" type="button">+ New license</button>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <section id="view-overview" class="view active">
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-label">Total licenses</div>
+              <div id="stats-total-licenses" class="stat-value">0</div>
+            </article>
+            <article class="stat-card accent">
+              <div class="stat-label">Available</div>
+              <div id="stats-available-licenses" class="stat-value">0</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-label">Licenses in use</div>
+              <div id="stats-licenses-in-use" class="stat-value">0</div>
+            </article>
+            <article class="stat-card warn">
+              <div class="stat-label">Revoked licenses</div>
+              <div id="stats-revoked-licenses" class="stat-value">0</div>
+            </article>
+            <article class="stat-card notification-stat">
+              <div class="stat-label">Pending purchases</div>
+              <div id="stats-pending-purchases" class="stat-value">0</div>
+            </article>
+          </div>
+
+          <section id="pending-purchases-panel" class="panel notification-panel hidden">
+            <div class="panel-head">
+              <div>
+                <h2>Purchase checkouts</h2>
+                <p class="panel-desc">Buyers started Moneybird checkout. After payment, issue a key and email it.</p>
+              </div>
+              <button class="btn btn-ghost btn-small" data-view-jump="purchases" type="button">View all</button>
+            </div>
+            <div id="pending-purchases-list" class="notification-list"></div>
+          </section>
+
+          <div class="split-grid">
+            <section class="panel">
+              <div class="panel-head"><h2>Recent activity</h2></div>
+              <ul id="activity-list" class="activity-list"></ul>
+              <div id="activity-empty" class="empty-state hidden">
+                <strong>No activity yet</strong>
+                <p>Create your first license to get started.</p>
+                <button class="btn btn-primary" data-open-create type="button">Create license</button>
+              </div>
+            </section>
+            <section class="panel">
+              <div class="panel-head"><h2>Quick actions</h2></div>
+              <div class="quick-actions">
+                <button class="quick-action" data-open-create type="button">
+                  <span class="quick-action-title">Issue a license</span>
+                  <span class="quick-action-desc">Generate a 1-year key for a customer</span>
+                </button>
+                <button class="quick-action" data-view-jump="licenses" type="button">
+                  <span class="quick-action-title">Browse licenses</span>
+                  <span class="quick-action-desc">Search, copy keys, and revoke access</span>
+                </button>
+                <button class="quick-action" data-view-jump="purchases" type="button">
+                  <span class="quick-action-title">Review purchases</span>
+                  <span class="quick-action-desc">Fulfil Moneybird checkouts and email keys</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-licenses" class="view">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>License keys</h2>
+                <p class="panel-desc">Search, filter, and manage all issued license keys.</p>
+              </div>
+            </div>
+            <div class="toolbar">
+              <input id="license-search" class="search-input" type="search" placeholder="Search by license key or customer name">
+              <div class="filter-tabs" role="tablist">
+                <button class="filter-tab active" data-license-filter="all" type="button">All</button>
+                <button class="filter-tab" data-license-filter="available" type="button">Available</button>
+                <button class="filter-tab" data-license-filter="in_use" type="button">In use</button>
+                <button class="filter-tab" data-license-filter="revoked" type="button">Revoked</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>License key</th>
+                    <th>Customer</th>
+                    <th>Validity</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="licenses-table-body"></tbody>
+              </table>
+            </div>
+            <div id="licenses-empty" class="empty-state hidden">
+              <strong>No licenses found</strong>
+              <p>Try a different search or create a new license.</p>
+            </div>
+          </section>
+        </section>
+
+        <section id="view-purchases" class="view">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Purchases</h2>
+                <p class="panel-desc">Checkout intents from the buy page (Moneybird). Issue a key after payment.</p>
+              </div>
+            </div>
+            <div class="toolbar">
+              <input id="purchase-search" class="search-input" type="search" placeholder="Search by name, email, or company">
+              <div class="filter-tabs" role="tablist">
+                <button class="filter-tab active" data-purchase-filter="pending" type="button">Pending</button>
+                <button class="filter-tab" data-purchase-filter="fulfilled" type="button">Fulfilled</button>
+                <button class="filter-tab" data-purchase-filter="all" type="button">All</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>When</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>VAT</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="purchases-table-body"></tbody>
+              </table>
+            </div>
+            <div id="purchases-empty" class="empty-state hidden">
+              <strong>No purchases found</strong>
+              <p>Intents appear when someone starts checkout on the buy page.</p>
+            </div>
+          </section>
+        </section>
+
+        <section id="view-customers" class="view">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Customers</h2>
+                <p class="panel-desc">People who hold a license key — contact details and keys in one place.</p>
+              </div>
+            </div>
+            <div class="toolbar">
+              <input id="customer-search" class="search-input" type="search" placeholder="Search by name, email, or company">
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>Licenses</th>
+                    <th>Last activity</th>
+                  </tr>
+                </thead>
+                <tbody id="customers-table-body"></tbody>
+              </table>
+            </div>
+            <div id="customers-empty" class="empty-state hidden">
+              <strong>No customers yet</strong>
+              <p>Customers appear when you issue licenses or fulfil purchases.</p>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <div id="modal-backdrop" class="modal-backdrop hidden">
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h2 id="modal-title">Modal</h2>
+        <button id="modal-close" class="btn btn-icon btn-toolbar" type="button" aria-label="Close">
+          <svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+      <div id="modal-footer" class="modal-footer hidden"></div>
+    </div>
+  </div>
+
+  <script src="admin.js?v=20260917f"></script>
+</body>
+</html>

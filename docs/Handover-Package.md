@@ -49,7 +49,8 @@ Script: `scripts/acceptance_web_upload.py`
 |---|---|---|
 | [FB-001](qa/FB-001-engineering-items-properties.md) | Multi-project Engineering Items properties | **Verify** — live 2026-09-10 |
 | [FB-002](qa/FB-002-header-project-details.md) | Header from uploaded project | **Closed** — Jan confirmed |
-| [FB-003](qa/FB-003-trial-licence-pricing.md) | 7-day trial + 1-year licence (PropertiesManager); desktop wait | **In progress** — Days 1–3 done; Day 4 Fri 18 |
+| [FB-003](qa/FB-003-trial-licence-pricing.md) | 7-day trial + 1-year licence (PropertiesManager); desktop wait | **Done** — admin + Moneybird links |
+| [FB-004](qa/FB-004-website-copy-dcf-strato.md) | Plant 3D not required (only .dcf); no STRATO on site; local later | **Done** |
 
 Vitens / MN-P-RHN-PID-0001 remains the **regression** sample for list counts only.
 

@@ -6,7 +6,7 @@ require_once __DIR__ . '/config.php';
   <div class="wrap">
     <div class="f-brand">
       <a href="index.php" class="logo"><span class="mark"></span>EasyReport<span class="dim">Creator</span></a>
-      <p>Web application for issuing Plant 3D lists to Excel from ProcessPower.dcf — built as a lighter replacement for AutoCAD Report Creator.</p>
+      <p>Web application for issuing Excel lists from ProcessPower.dcf — Plant 3D is not required. A lighter replacement for AutoCAD Report Creator. Local app will follow later.</p>
     </div>
     <div class="f-col">
       <h4>Site</h4>

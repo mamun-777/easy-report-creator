@@ -1,8 +1,11 @@
 <?php
 declare(strict_types=1);
+require_once __DIR__ . '/inc/config.php';
 $page = 'pricing';
 $title = 'Pricing — EasyReportCreator | easyreportcreator.com';
-$description = 'EasyReportCreator: 7-day trial, then a 1-year licence — same commercial model as PropertiesManager. Hosted web app for AutoCAD Plant 3D lists.';
+$description = 'EasyReportCreator: 7-day trial, then a 1-year licence. Plant 3D is not required; only ProcessPower.dcf.';
+$cfg = erc_licence_config();
+$price = (float) ($cfg['unit_price_eur'] ?? 59);
 require __DIR__ . '/inc/header.php';
 ?>
 
@@ -10,7 +13,7 @@ require __DIR__ . '/inc/header.php';
   <div class="wrap">
     <div class="eyebrow">Pricing</div>
     <h1>7-day trial. Then a 1-year licence.</h1>
-    <p class="sub">Same model as PropertiesManager: try the hosted report app free for seven days, then activate a one-year licence for ongoing use. Desktop installer stays deferred for now.</p>
+    <p class="sub">Try the hosted report app free for seven days, then activate a one-year licence for ongoing use. Plant 3D is not required — only your <code>ProcessPower.dcf</code> file. A local app will follow later.</p>
   </div>
 </section>
 
@@ -25,9 +28,9 @@ require __DIR__ . '/inc/header.php';
         <div class="plan-sub">No card required to start</div>
         <ul class="plan-feats">
           <li>Upload ProcessPower.dcf in the browser</li>
-          <li>All core Plant 3D list types</li>
+          <li>Plant 3D not required — only the .dcf</li>
+          <li>All core list types + Excel export</li>
           <li>Column picker + company templates</li>
-          <li>English Excel export with header &amp; logo</li>
           <li>Trial countdown in the app</li>
         </ul>
         <a href="report/register.php" class="btn block">Start free trial</a>
@@ -35,18 +38,18 @@ require __DIR__ . '/inc/header.php';
 
       <div class="plan">
         <div class="plan-name">1-year licence</div>
-        <div class="plan-desc">Annual licence / use for the hosted EasyReportCreator web app (PropertiesManager-aligned).</div>
+        <div class="plan-desc">Annual licence for the hosted EasyReportCreator web app. One company account, full access for 12 months from activation.</div>
         <div class="plan-price-row">Annual</div>
-        <div class="plan-price custom">On request</div>
-        <div class="plan-sub">Activate with a licence key</div>
+        <div class="plan-price">€<?= h((string) (int) $price) ?><span class="unit"> / year</span></div>
+        <div class="plan-sub">NL 21% VAT or 0% outside NL</div>
         <ul class="plan-feats">
           <li>Full access for 12 months</li>
-          <li>Key activation in the report app</li>
+          <li>Secure Moneybird checkout</li>
+          <li>Activate with your licence key in the app</li>
           <li>Company account + saved profile</li>
-          <li>Hosted on easyreportcreator.com (STRATO)</li>
-          <li>Renew before expiry to stay uninterrupted</li>
+          <li>Local / desktop app will follow later</li>
         </ul>
-        <a href="contact.php" class="btn ghost block">Ask for a licence key</a>
+        <a href="buy.php" class="btn ghost block">Buy 1-year licence</a>
       </div>
     </div>
   </div>
@@ -60,20 +63,20 @@ require __DIR__ . '/inc/header.php';
     </div>
     <div class="faq">
       <div class="faq-item">
-        <h3>Is this the same model as PropertiesManager?</h3>
-        <p>Yes. EasyReportCreator uses a <strong>7-day trial</strong> and then a <strong>1-year licence / use</strong>, matching PropertiesManager’s commercial shape. Pricing for the annual key is arranged with TSPD.</p>
+        <h3>Do I need AutoCAD Plant 3D installed?</h3>
+        <p><strong>No.</strong> EasyReportCreator only needs the <code>ProcessPower.dcf</code> file from the project. Plant 3D does not need to be installed or running.</p>
       </div>
       <div class="faq-item">
-        <h3>What happens when the trial ends?</h3>
-        <p>The report app shows a clear expired screen. Upload, lists, and Excel export stay locked until you activate a 1-year licence key. You can still log in and enter a key.</p>
+        <h3>How does payment work?</h3>
+        <p>Buy online via secure Moneybird checkout (Dutch 21% VAT or non-Dutch 0% VAT). After payment you receive a licence key to activate in the report app.</p>
       </div>
       <div class="faq-item">
-        <h3>Is there a desktop installer?</h3>
-        <p>Not yet. A desktop / no-upload option is deferred. The product today is the hosted web app on STRATO.</p>
+        <h3>When does the 1-year period start?</h3>
+        <p>The licence runs for <strong>365 days from activation</strong> in the report app — not from the payment date alone.</p>
       </div>
       <div class="faq-item">
-        <h3>Where do I get a licence key?</h3>
-        <p>Contact <a href="mailto:support@tspd.nl">support@tspd.nl</a> or use the contact form. Keys activate in the report app under Licence.</p>
+        <h3>Is there a local / desktop app?</h3>
+        <p>Not yet — it will follow later. Today the product is the hosted web app on easyreportcreator.com.</p>
       </div>
     </div>
   </div>

@@ -1,0 +1,14 @@
+<?php
+/**
+ * Optional local overrides (not committed). Copy to config.local.php on the server.
+ */
+return [
+    'admin_username' => 'admin',
+    'admin_password' => 'change-me',
+    'admin_api_key' => 'change-this-master-api-key',
+    // 'unit_price_eur' => 59,
+    // 'payment_links' => [
+    //     'nl21' => 'https://mnbrd.com/p/...',
+    //     'non_nl0' => 'https://mnbrd.com/p/...',
+    // ],
+];

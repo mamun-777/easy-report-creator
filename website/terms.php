@@ -10,20 +10,23 @@ require __DIR__ . '/inc/header.php';
   <div class="wrap">
     <div class="eyebrow">Terms</div>
     <h1>What Version 1 delivers.</h1>
-    <p class="sub">Short delivery terms for the 90–100 hour web application package. Not a consumer webshop checkout.</p>
+    <p class="sub">Short delivery and licence terms for the hosted EasyReportCreator web app.</p>
   </div>
 </section>
 
 <section class="tight">
   <div class="wrap prose">
     <h2>Scope</h2>
-    <p>EasyReportCreator Version 1 is a web application that reads an AutoCAD Plant 3D project database and issues English Excel lists. Acceptance is against the sample project MN-P-RHN-PID-0001. The public site at easyreportcreator.com is included as a light-themed product site hosted on STRATO.</p>
+    <p>EasyReportCreator is a hosted web application that reads a <strong>ProcessPower.dcf</strong> file and issues English Excel lists. <strong>Plant 3D is not required</strong> — only the .dcf file. Acceptance uses the sample project MN-P-RHN-PID-0001. The public site at easyreportcreator.com includes product pages and the report app.</p>
 
-    <h2>What is not included</h2>
-    <p>Live write-back into ProcessPower.dcf, a Windows installer, public cloud hosting of your project files, SSO / multi-tenant accounts, and full 3D isometric lists are optional later packages.</p>
+    <h2>Trial and licence</h2>
+    <p>New companies receive a <strong>7-day trial</strong>. Ongoing use requires a <strong>1-year licence</strong>, paid via Moneybird and activated with a licence key (365 days from activation).</p>
+
+    <h2>What is not included yet</h2>
+    <p>A local / desktop installer will follow later. Live write-back into ProcessPower.dcf, SSO / multi-tenant enterprise hosting of your project files, and full 3D isometric lists are optional later packages.</p>
 
     <h2>Support</h2>
-    <p>Email <?= h(SITE['support_email']) ?>. One consolidated feedback round is included after the first complete demo of this package. Extra UAT rounds are a change request.</p>
+    <p>Email <?= h(SITE['support_email']) ?>. Extra UAT rounds beyond agreed feedback are a change request.</p>
 
     <h2>Trademarks</h2>
     <p>AutoCAD, Plant 3D and Inventor are trademarks of Autodesk, Inc. EasyReportCreator is not affiliated with Autodesk.</p>

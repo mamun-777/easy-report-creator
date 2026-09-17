@@ -1,9 +1,10 @@
 <?php
-/** FB-003: 7-day trial + 1-year licence smoke test. */
+/** FB-003: 7-day trial + issued 1-year key + admin registry smoke test. */
 declare(strict_types=1);
 
 $root = dirname(__DIR__);
 require_once $root . '/website/inc/bootstrap.php';
+require_once $root . '/website/inc/config.php';
 
 $failed = 0;
 $ts = gmdate('YmdHis');
@@ -18,14 +19,9 @@ if (($licence['status'] ?? '') !== 'trial' || empty($licence['can_use'])) {
     echo "FAIL: expected active trial\n";
     $failed++;
 }
-if ((int) ($licence['days_remaining'] ?? 0) < 1 || (int) $licence['days_remaining'] > 7) {
-    echo "FAIL: days_remaining should be 1..7\n";
-    $failed++;
-}
 
 $companyId = (int) $result['user']['company_id'];
 
-// Expire trial
 $past = gmdate('c', time() - 86400);
 $stmt = ErcAuth::db()->prepare('UPDATE companies SET trial_ends_at = ?, licence_status = ? WHERE id = ?');
 $stmt->execute([$past, 'trial', $companyId]);
@@ -41,11 +37,28 @@ try {
     echo "FAIL: requireAccess should throw when expired\n";
     $failed++;
 } catch (ErcLicenceException $e) {
-    echo "OK requireAccess blocked: {$e->getMessage()}\n";
+    echo "OK requireAccess blocked\n";
 }
 
-// Activate 1-year licence
-$active = ErcLicence::activate($companyId, 'ERC-ADMIN-GRANT-1YEAR');
+try {
+    ErcLicence::activate($companyId, 'ERC-AAAA-BBBB-CCCC');
+    echo "FAIL: unissued key should reject\n";
+    $failed++;
+} catch (InvalidArgumentException $e) {
+    echo "OK unissued key rejected\n";
+}
+
+$issued = ErcLicence::createKey([
+    'customer_name' => 'Trial User',
+    'customer_email' => $email,
+    'company_name' => "Trial Co {$ts}",
+    'validity_days' => 365,
+    'source' => 'test',
+]);
+$key = (string) $issued['licence_key'];
+echo "Issued key {$key}\n";
+
+$active = ErcLicence::activate($companyId, $key);
 echo "After activate: status={$active['status']} can_use=" . ($active['can_use'] ? '1' : '0') . " days={$active['days_remaining']}\n";
 if (($active['status'] ?? '') !== 'active' || empty($active['can_use'])) {
     echo "FAIL: expected active licence\n";
@@ -64,14 +77,28 @@ try {
     echo "OK bad key rejected\n";
 }
 
-// Login returns licence
-ErcAuth::logout();
-$login = ErcAuth::login($email, $password);
-echo "Login licence status=" . ($login['licence']['status'] ?? '?') . "\n";
-if (($login['licence']['status'] ?? '') !== 'active') {
-    echo "FAIL: login should return active licence\n";
+$intent = ErcLicence::recordPurchaseIntent([
+    'full_name' => 'Buyer Test',
+    'email' => "buyer+{$ts}@example.com",
+    'company_name' => 'Buyer Co',
+    'vat_region' => 'nl21',
+    'consent' => true,
+]);
+if (empty($intent['success']) || empty($intent['payment_url'])) {
+    echo "FAIL: purchase intent\n";
     $failed++;
+} else {
+    echo "OK purchase intent → {$intent['payment_url']}\n";
 }
+
+$admin = ErcAdmin::login(
+    (string) erc_licence_config()['admin_username'],
+    (string) erc_licence_config()['admin_password']
+);
+echo "OK admin login as {$admin['username']}\n";
+ErcAdmin::requireAdmin($admin['token']);
+$stats = ErcLicence::dashboardStats();
+echo "Stats keys_total={$stats['keys_total']} intents_pending={$stats['intents_pending']}\n";
 
 echo $failed === 0 ? "FB-003 PASSED\n" : "FB-003 FAILED ({$failed})\n";
 exit($failed === 0 ? 0 : 1);

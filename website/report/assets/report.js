@@ -322,7 +322,7 @@ function renderProjectMeta(proj, filename) {
   if (!card) return;
   if (!proj) {
     card.classList.add("is-empty");
-    card.innerHTML = `<p class="muted" id="project-meta">No project open. Upload ProcessPower.dcf from your Plant 3D project folder. Plant 3D does not need to be running.</p>`;
+    card.innerHTML = `<p class="muted" id="project-meta">No project open. Upload ProcessPower.dcf — Plant 3D is not required, only the .dcf file.</p>`;
     updateChrome();
     return;
   }
@@ -885,7 +885,7 @@ $("notice-close")?.addEventListener("click", hideNotice);
 function acceptDcfFile(file) {
   if (!file) return;
   if (!/\.dcf$/i.test(file.name)) {
-    showError("Invalid file", "Please select a Plant 3D database file (.dcf).");
+    showError("Invalid file", "Please select a ProcessPower.dcf file.");
     return;
   }
   uploadDcf(file).catch((err) => showError("Upload failed", err.message));
