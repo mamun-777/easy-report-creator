@@ -26,7 +26,7 @@ $showTrialBanner = ($licence['status'] ?? '') === 'trial';
   <meta name="color-scheme" content="light" />
   <title>EasyReportCreator — Report app</title>
   <link rel="stylesheet" href="../assets/fonts.css?v=20260908c" />
-  <link rel="stylesheet" href="assets/report.css?v=20260917a" />
+  <link rel="stylesheet" href="assets/report.css?v=20260918a" />
 </head>
 <body data-licence-status="<?= $licenceStatus ?>">
   <?php if ($showTrialBanner): ?>
@@ -139,6 +139,25 @@ $showTrialBanner = ($licence['status'] ?? '') === 'trial';
           </div>
           <table class="grid" id="grid" hidden><thead></thead><tbody></tbody></table>
         </div>
+        <div class="pager" id="pager" hidden>
+          <label class="pager-size">
+            <span>Rows per page</span>
+            <select id="page-size" aria-label="Rows per page">
+              <option value="25">25</option>
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+              <option value="250">250</option>
+            </select>
+          </label>
+          <span class="pager-range" id="pager-range">Showing 0–0 of 0</span>
+          <div class="pager-nav" role="navigation" aria-label="Table pages">
+            <button type="button" class="btn ghost pager-btn" id="page-first" title="First page" aria-label="First page">«</button>
+            <button type="button" class="btn ghost pager-btn" id="page-prev" title="Previous page" aria-label="Previous page">‹</button>
+            <span class="pager-pages" id="pager-pages"></span>
+            <button type="button" class="btn ghost pager-btn" id="page-next" title="Next page" aria-label="Next page">›</button>
+            <button type="button" class="btn ghost pager-btn" id="page-last" title="Last page" aria-label="Last page">»</button>
+          </div>
+        </div>
       </section>
     </section>
   </main>
@@ -241,6 +260,6 @@ $showTrialBanner = ($licence['status'] ?? '') === 'trial';
     </form>
   </dialog>
 
-  <script src="assets/report.js?v=20260916a"></script>
+  <script src="assets/report.js?v=20260918a"></script>
 </body>
 </html>

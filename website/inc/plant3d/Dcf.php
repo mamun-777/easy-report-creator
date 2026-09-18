@@ -113,8 +113,14 @@ final class ErcDcf
         if (!self::tableExists($pdo, 'EngineeringItems')) {
             return 0;
         }
-        $sql = "SELECT COUNT(*) FROM EngineeringItems ei
-             WHERE ei.ClassName NOT IN ('Minor Pipe Line', 'Major Pipe Line', 'Pipe Line Group')";
+        // P&ID ProcessPower uses ClassName; 3D Piping.dcf EngineeringItems does not.
+        $hasClass = ErcCatalog::tableHasColumn($pdo, 'EngineeringItems', 'ClassName');
+        if ($hasClass) {
+            $sql = "SELECT COUNT(*) FROM EngineeringItems ei
+                 WHERE ei.ClassName NOT IN ('Minor Pipe Line', 'Major Pipe Line', 'Pipe Line Group')";
+        } else {
+            $sql = 'SELECT COUNT(*) FROM EngineeringItems ei WHERE 1=1';
+        }
         if (self::tableExists($pdo, 'PipeLines')) {
             $sql .= ' AND NOT EXISTS (SELECT 1 FROM PipeLines _pl WHERE _pl.PnPID = ei.PnPID)';
         }

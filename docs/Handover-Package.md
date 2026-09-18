@@ -51,6 +51,7 @@ Script: `scripts/acceptance_web_upload.py`
 | [FB-002](qa/FB-002-header-project-details.md) | Header from uploaded project | **Closed** — Jan confirmed |
 | [FB-003](qa/FB-003-trial-licence-pricing.md) | 7-day trial + 1-year licence (PropertiesManager); desktop wait | **Done** — admin + Moneybird links |
 | [FB-004](qa/FB-004-website-copy-dcf-strato.md) | Plant 3D not required (only .dcf); no STRATO on site; local later | **Done** |
+| [FB-005](qa/FB-005-piping-dcf-drawing-lists.md) | Drawing lists from Ortho/Iso/ProcessPower OK; Piping.dcf import failed | **In progress** — schema-safe load fix |
 
 Vitens / MN-P-RHN-PID-0001 remains the **regression** sample for list counts only.
 

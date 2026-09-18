@@ -23,6 +23,9 @@ let templates = [];
 let currentId = null;
 let currentTemplate = null;
 let currentRows = [];
+let gridPage = 1;
+let gridPageSize = 50;
+let filteredRowCount = 0;
 let project = null;
 let projectDetails = null;
 let companyProfile = null;
@@ -293,16 +296,101 @@ function headerFor(col) {
   return col.header_en || col.header || col.key;
 }
 
-function renderGrid(filter = "") {
+function filteredRows(filter = "") {
+  const cols = visibleColumns();
+  const q = String(filter ?? "").trim().toLowerCase();
+  if (!q) return currentRows;
+  return currentRows.filter((row) =>
+    cols.some((c) => String(row[c.key] ?? "").toLowerCase().includes(q))
+  );
+}
+
+function totalPages(rowCount) {
+  return Math.max(1, Math.ceil(rowCount / gridPageSize));
+}
+
+function clampGridPage(rowCount) {
+  const pages = totalPages(rowCount);
+  if (gridPage > pages) gridPage = pages;
+  if (gridPage < 1) gridPage = 1;
+}
+
+function pageWindow(current, total) {
+  // Show up to 5 page buttons centered on current (common pattern).
+  const maxButtons = 5;
+  if (total <= maxButtons) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+  let start = Math.max(1, current - Math.floor(maxButtons / 2));
+  let end = start + maxButtons - 1;
+  if (end > total) {
+    end = total;
+    start = end - maxButtons + 1;
+  }
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+}
+
+function updatePager(rowCount) {
+  const pager = $("pager");
+  if (!pager) return;
+  const hasRows = Boolean(project && currentTemplate && currentRows.length);
+  pager.hidden = !hasRows;
+  if (!hasRows) return;
+
+  clampGridPage(rowCount);
+  const pages = totalPages(rowCount);
+  const start = rowCount === 0 ? 0 : (gridPage - 1) * gridPageSize + 1;
+  const end = Math.min(gridPage * gridPageSize, rowCount);
+  $("pager-range").textContent =
+    rowCount === 0 ? "Showing 0 of 0" : `Showing ${start.toLocaleString("en-GB")}–${end.toLocaleString("en-GB")} of ${rowCount.toLocaleString("en-GB")}`;
+
+  const sizeSel = $("page-size");
+  if (sizeSel && String(gridPageSize) !== sizeSel.value) {
+    sizeSel.value = String(gridPageSize);
+  }
+
+  $("page-first").disabled = gridPage <= 1;
+  $("page-prev").disabled = gridPage <= 1;
+  $("page-next").disabled = gridPage >= pages;
+  $("page-last").disabled = gridPage >= pages;
+
+  const pagesEl = $("pager-pages");
+  pagesEl.innerHTML = pageWindow(gridPage, pages)
+    .map((n) => {
+      const active = n === gridPage ? "is-active" : "";
+      return `<button type="button" class="btn ghost pager-btn pager-num ${active}" data-page="${n}" aria-label="Page ${n}" ${
+        n === gridPage ? 'aria-current="page"' : ""
+      }>${n}</button>`;
+    })
+    .join("");
+  pagesEl.querySelectorAll("[data-page]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      goToPage(Number(btn.dataset.page));
+    });
+  });
+}
+
+function goToPage(page) {
+  gridPage = page;
+  renderGrid($("search")?.value || "", { keepPage: true });
+  const wrap = $("grid-wrap");
+  if (wrap) wrap.scrollTop = 0;
+}
+
+function renderGrid(filter = "", options = {}) {
   const cols = visibleColumns();
   const thead = $("grid").querySelector("thead");
   const tbody = $("grid").querySelector("tbody");
   thead.innerHTML = `<tr>${cols.map((c) => `<th>${escapeHtml(headerFor(c))}</th>`).join("")}</tr>`;
-  const q = filter.trim().toLowerCase();
-  const rows = !q
-    ? currentRows
-    : currentRows.filter((row) => cols.some((c) => String(row[c.key] ?? "").toLowerCase().includes(q)));
-  tbody.innerHTML = rows
+  const rows = filteredRows(filter);
+  filteredRowCount = rows.length;
+  if (!options.keepPage) {
+    gridPage = 1;
+  }
+  clampGridPage(rows.length);
+  const start = (gridPage - 1) * gridPageSize;
+  const pageRows = rows.slice(start, start + gridPageSize);
+  tbody.innerHTML = pageRows
     .map(
       (row) =>
         `<tr>${cols
@@ -313,7 +401,8 @@ function renderGrid(filter = "") {
           .join("")}</tr>`
     )
     .join("");
-  $("row-count").textContent = `${rows.length} / ${currentRows.length}`;
+  $("row-count").textContent = `${rows.length.toLocaleString("en-GB")} / ${currentRows.length.toLocaleString("en-GB")}`;
+  updatePager(rows.length);
   updateEmptyState();
 }
 
@@ -730,6 +819,7 @@ async function loadReport(templateId, session = projectSession) {
   currentId = data.resolved_id || templateId;
   currentTemplate = data.template;
   currentRows = data.rows || [];
+  gridPage = 1;
   project = data.project;
   if (data.profile) companyProfile = data.profile;
   if (data.has_logo) {
@@ -1019,6 +1109,16 @@ $("btn-logout").addEventListener("click", async () => {
 });
 
 $("search").addEventListener("input", (e) => renderGrid(e.target.value));
+
+$("page-size")?.addEventListener("change", (e) => {
+  gridPageSize = Math.max(1, Number(e.target.value) || 50);
+  gridPage = 1;
+  renderGrid($("search").value, { keepPage: true });
+});
+$("page-first")?.addEventListener("click", () => goToPage(1));
+$("page-prev")?.addEventListener("click", () => goToPage(gridPage - 1));
+$("page-next")?.addEventListener("click", () => goToPage(gridPage + 1));
+$("page-last")?.addEventListener("click", () => goToPage(totalPages(filteredRowCount)));
 
 boot().catch((err) => {
   showErrorDialog("Could not start", err.message);

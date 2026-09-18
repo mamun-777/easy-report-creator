@@ -460,7 +460,9 @@ SQL;
         if (ErcDcf::tableExists($pdo, 'PipeLineGroup')) {
             $where .= ' AND NOT EXISTS (SELECT 1 FROM PipeLineGroup _pg WHERE _pg.PnPID = ei.PnPID)';
         }
-        $where .= " AND ei.ClassName NOT IN ('Minor Pipe Line', 'Major Pipe Line', 'Pipe Line Group')";
+        if (ErcCatalog::tableHasColumn($pdo, 'EngineeringItems', 'ClassName')) {
+            $where .= " AND ei.ClassName NOT IN ('Minor Pipe Line', 'Major Pipe Line', 'Pipe Line Group')";
+        }
 
         $sql = self::LINE_REL_CTE . '
         SELECT
