@@ -176,3 +176,11 @@ yarn-error.log*
 *.gz
 *.tgz
 website-staging/
+
+# --- Docs / License Admin manual build artefacts ---
+# Final screenshots + PDF/MD under docs/manuals/ are kept; scratch & sync copies are not.
+docs/manuals/**/screenshots/light-test/
+docs/manuals/**/screenshots/_scratch/
+docs/manuals/**/capture/admin.css
+scripts/retheme_admin_light.py
+scripts/verify_admin_light.py

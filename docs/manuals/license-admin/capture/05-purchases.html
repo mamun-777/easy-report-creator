@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Purchases — License Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <style>html,body{height:100%;overflow:hidden;} .app-shell{min-height:100vh;}</style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="brand-mark small">ERC</div>
+          <div>
+            <div class="brand-title">License Admin</div>
+            <div class="brand-subtitle">EasyReportCreator</div>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item" type="button">Overview</button>
+        <button class="nav-item" type="button">Licenses</button>
+        <button class="nav-item active" type="button">Purchases<span class="nav-badge">2</span></button>
+        <button class="nav-item" type="button">Customers</button>
+      </nav>
+    </aside>
+    <div class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <div>
+            <h1>Purchases</h1>
+            <p>Fulfil Moneybird checkouts and email license keys.</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" type="button">+ New license</button>
+        </div>
+      </header>
+      <main class="page-content">
+        <section class="view active">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Purchases</h2>
+                <p class="panel-desc">Checkout intents from the buy page (Moneybird). Issue a key after payment.</p>
+              </div>
+            </div>
+            <div class="toolbar">
+              <input class="search-input" type="search" placeholder="Search by name, email, or company">
+              <div class="filter-tabs">
+                <button class="filter-tab active" type="button">Pending</button>
+                <button class="filter-tab" type="button">Fulfilled</button>
+                <button class="filter-tab" type="button">All</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>When</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>VAT</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="muted">18 Sep 2026, 14:05</td>
+                    <td>Anna de Vries</td>
+                    <td>anna@example.nl</td>
+                    <td>Example Engineering B.V.</td>
+                    <td>EU</td>
+                    <td><span class="badge badge-warn">pending</span></td>
+                    <td><button type="button" class="btn btn-primary btn-small">Issue key</button></td>
+                  </tr>
+                  <tr>
+                    <td class="muted">18 Sep 2026, 11:05</td>
+                    <td>Mark Jansen</td>
+                    <td>mark@planteng.nl</td>
+                    <td>PlantEng</td>
+                    <td>NL</td>
+                    <td><span class="badge badge-warn">pending</span></td>
+                    <td><button type="button" class="btn btn-primary btn-small">Issue key</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customers — License Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <style>html,body{height:100%;overflow:hidden;} .app-shell{min-height:100vh;}</style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="brand-mark small">ERC</div>
+          <div>
+            <div class="brand-title">License Admin</div>
+            <div class="brand-subtitle">EasyReportCreator</div>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item" type="button">Overview</button>
+        <button class="nav-item" type="button">Licenses</button>
+        <button class="nav-item" type="button">Purchases</button>
+        <button class="nav-item active" type="button">Customers</button>
+      </nav>
+    </aside>
+    <div class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <div>
+            <h1>Customers</h1>
+            <p>Contact details for everyone who holds a license.</p>
+          </div>
+        </div>
+      </header>
+      <main class="page-content">
+        <section class="view active">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Customers</h2>
+                <p class="panel-desc">People who hold a license key — contact details and keys in one place.</p>
+              </div>
+            </div>
+            <div class="toolbar">
+              <input class="search-input" type="search" placeholder="Search by name, email, or company">
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>Licenses</th>
+                    <th>Last activity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Anna de Vries</td>
+                    <td>anna@example.nl</td>
+                    <td>Example Engineering B.V.</td>
+                    <td>1</td>
+                    <td class="muted">18 Sep 2026, 14:22</td>
+                  </tr>
+                  <tr>
+                    <td>Peter Bakker</td>
+                    <td>peter@bakker-pipe.nl</td>
+                    <td>Bakker Pipe</td>
+                    <td>2</td>
+                    <td class="muted">12 Sep 2026, 09:41</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

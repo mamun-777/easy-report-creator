@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overview — License Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <style>html,body{height:100%;overflow:hidden;} .app-shell{min-height:100vh;}</style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="brand-mark small">ERC</div>
+          <div>
+            <div class="brand-title">License Admin</div>
+            <div class="brand-subtitle">EasyReportCreator</div>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" type="button"><span class="nav-icon"></span>Overview</button>
+        <button class="nav-item" type="button"><span class="nav-icon"></span>Licenses</button>
+        <button class="nav-item" type="button"><span class="nav-icon"></span>Purchases<span class="nav-badge">2</span></button>
+        <button class="nav-item" type="button"><span class="nav-icon"></span>Customers</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="current-user">
+          <div class="current-user-name">admin</div>
+          <div class="current-user-role">Administrator</div>
+        </div>
+        <button class="btn btn-ghost full-width" type="button">Sign out</button>
+      </div>
+    </aside>
+    <div class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <div>
+            <h1>Overview</h1>
+            <p>Monitor licenses and customer access at a glance.</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" type="button">+ New license</button>
+        </div>
+      </header>
+      <main class="page-content">
+        <section class="view active">
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-label">Total licenses</div><div class="stat-value">12</div></article>
+            <article class="stat-card accent"><div class="stat-label">Available</div><div class="stat-value">4</div></article>
+            <article class="stat-card"><div class="stat-label">Licenses in use</div><div class="stat-value">7</div></article>
+            <article class="stat-card warn"><div class="stat-label">Revoked licenses</div><div class="stat-value">1</div></article>
+            <article class="stat-card notification-stat"><div class="stat-label">Pending purchases</div><div class="stat-value">2</div></article>
+          </div>
+          <section class="panel notification-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Purchase checkouts</h2>
+                <p class="panel-desc">Buyers started Moneybird checkout. After payment, issue a key and email it.</p>
+              </div>
+              <button class="btn btn-ghost btn-small" type="button">View all</button>
+            </div>
+            <div class="notification-list">
+              <div class="notification-item">
+                <div>
+                  <strong>Anna de Vries</strong> started checkout
+                  <div class="muted">anna@example.nl · EU</div>
+                </div>
+                <button type="button" class="btn btn-ghost btn-small">Issue key</button>
+              </div>
+              <div class="notification-item">
+                <div>
+                  <strong>Mark Jansen</strong> started checkout
+                  <div class="muted">mark@planteng.nl · NL</div>
+                </div>
+                <button type="button" class="btn btn-ghost btn-small">Issue key</button>
+              </div>
+            </div>
+          </section>
+          <div class="split-grid">
+            <section class="panel">
+              <div class="panel-head"><h2>Recent activity</h2></div>
+              <ul class="activity-list">
+                <li class="activity-item">
+                  <div class="activity-icon" aria-hidden="true"></div>
+                  <div>
+                    <div>License issued to Anna de Vries</div>
+                    <div class="muted mono">ERC-A1B2-C3D4-E5F6</div>
+                  </div>
+                  <div class="activity-time">18 Sep 2026, 14:22</div>
+                </li>
+                <li class="activity-item">
+                  <div class="activity-icon" aria-hidden="true"></div>
+                  <div>
+                    <div>Mark Jansen started purchase</div>
+                    <div class="muted mono">mark@planteng.nl</div>
+                  </div>
+                  <div class="activity-time">18 Sep 2026, 11:05</div>
+                </li>
+              </ul>
+            </section>
+            <section class="panel">
+              <div class="panel-head"><h2>Quick actions</h2></div>
+              <div class="quick-actions">
+                <button class="quick-action" type="button">
+                  <span class="quick-action-title">Issue a license</span>
+                  <span class="quick-action-desc">Generate a 1-year key for a customer</span>
+                </button>
+                <button class="quick-action" type="button">
+                  <span class="quick-action-title">Browse licenses</span>
+                  <span class="quick-action-desc">Search, copy keys, and revoke access</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

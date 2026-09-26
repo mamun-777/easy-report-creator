@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Licenses — License Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <style>html,body{height:100%;overflow:hidden;} .app-shell{min-height:100vh;}</style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="brand-mark small">ERC</div>
+          <div>
+            <div class="brand-title">License Admin</div>
+            <div class="brand-subtitle">EasyReportCreator</div>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item" type="button">Overview</button>
+        <button class="nav-item active" type="button">Licenses</button>
+        <button class="nav-item" type="button">Purchases</button>
+        <button class="nav-item" type="button">Customers</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="current-user">
+          <div class="current-user-name">admin</div>
+          <div class="current-user-role">Administrator</div>
+        </div>
+      </div>
+    </aside>
+    <div class="app-main">
+      <header class="app-header">
+        <div class="header-left">
+          <div>
+            <h1>Licenses</h1>
+            <p>Search, filter, and manage all issued license keys.</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" type="button">+ New license</button>
+        </div>
+      </header>
+      <main class="page-content">
+        <section class="view active">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>License keys</h2>
+                <p class="panel-desc">Search, filter, and manage all issued license keys.</p>
+              </div>
+            </div>
+            <div class="toolbar">
+              <input class="search-input" type="search" value="" placeholder="Search by license key or customer name">
+              <div class="filter-tabs">
+                <button class="filter-tab active" type="button">All</button>
+                <button class="filter-tab" type="button">Available</button>
+                <button class="filter-tab" type="button">In use</button>
+                <button class="filter-tab" type="button">Revoked</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>License key</th>
+                    <th>Customer</th>
+                    <th>Validity</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mono">ERC-A1B2-C3D4-E5F6</td>
+                    <td>Anna de Vries<div class="muted">anna@example.nl</div></td>
+                    <td>365d</td>
+                    <td><span class="badge badge-success">available</span></td>
+                    <td class="muted">18 Sep 2026, 14:22</td>
+                    <td class="row-actions">
+                      <button type="button" class="btn btn-ghost btn-small">Copy</button>
+                      <button type="button" class="btn btn-ghost btn-small">Revoke</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="mono">ERC-9K2M-7P4Q-1X8Z</td>
+                    <td>Peter Bakker<div class="muted">peter@bakker-pipe.nl</div></td>
+                    <td>365d</td>
+                    <td><span class="badge badge-neutral">in use</span></td>
+                    <td class="muted">12 Sep 2026, 09:41</td>
+                    <td class="row-actions">
+                      <button type="button" class="btn btn-ghost btn-small">Copy</button>
+                      <button type="button" class="btn btn-ghost btn-small">Revoke</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="mono">ERC-3H7J-5N6R-2T9W</td>
+                    <td>Old pilot key<div class="muted">pilot@tspd.nl</div></td>
+                    <td>365d</td>
+                    <td><span class="badge badge-danger">revoked</span></td>
+                    <td class="muted">2 Sep 2026, 16:10</td>
+                    <td class="row-actions">
+                      <button type="button" class="btn btn-ghost btn-small">Copy</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

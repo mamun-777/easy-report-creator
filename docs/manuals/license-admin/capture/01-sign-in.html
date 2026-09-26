@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in — License Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <style>html,body{min-height:100vh;}</style>
+</head>
+<body>
+  <div class="login-shell">
+    <div class="login-glow" aria-hidden="true"></div>
+    <div class="login-card">
+      <div class="login-card-header">
+        <div class="login-brand-row">
+          <div class="brand-mark">ERC</div>
+          <span class="login-product-badge">Web app</span>
+        </div>
+        <h1>License Admin</h1>
+        <p class="login-lead">Manage online licenses, purchases, and customer access for EasyReportCreator.</p>
+      </div>
+      <form class="login-form" onsubmit="return false;">
+        <div>
+          <div class="login-field">
+            <label class="field-label">Username</label>
+            <div class="login-input-wrap">
+              <input type="text" value="admin" readonly>
+            </div>
+          </div>
+          <div class="login-field">
+            <label class="field-label">Password</label>
+            <div class="login-input-wrap">
+              <input type="password" value="••••••••••" readonly>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-login full-width" type="button">Sign in</button>
+        <div class="login-alt">
+          <button type="button">Sign in with master API key instead</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

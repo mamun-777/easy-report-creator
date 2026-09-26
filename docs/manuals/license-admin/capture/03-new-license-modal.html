@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New license — License Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <style>html,body{height:100%;overflow:hidden;} .app-shell{min-height:100vh;}</style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="brand-mark small">ERC</div>
+          <div>
+            <div class="brand-title">License Admin</div>
+            <div class="brand-subtitle">EasyReportCreator</div>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item" type="button">Overview</button>
+        <button class="nav-item active" type="button">Licenses</button>
+        <button class="nav-item" type="button">Purchases</button>
+        <button class="nav-item" type="button">Customers</button>
+      </nav>
+    </aside>
+    <div class="app-main">
+      <header class="app-header">
+        <div class="header-left"><div><h1>Licenses</h1><p>Search, filter, and manage all issued license keys.</p></div></div>
+        <div class="header-actions"><button class="btn btn-primary" type="button">+ New license</button></div>
+      </header>
+      <main class="page-content"><section class="panel" style="min-height:420px"></section></main>
+    </div>
+  </div>
+  <div class="modal-backdrop">
+    <div class="modal" role="dialog">
+      <div class="modal-header">
+        <h2>New license</h2>
+        <button class="btn btn-icon btn-toolbar" type="button" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <label class="field"><span class="field-label">Customer name</span><input value="Anna de Vries"></label>
+          <label class="field"><span class="field-label">Email</span><input type="email" value="anna@example.nl"></label>
+          <label class="field"><span class="field-label">Company</span><input value="Example Engineering B.V."></label>
+          <label class="field"><span class="field-label">Validity (days)</span><input type="number" value="365"></label>
+          <label class="field full"><span class="field-label">Notes</span><input value="Invoice 2026-0918"></label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost">Cancel</button>
+        <button type="button" class="btn btn-primary">Create license</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

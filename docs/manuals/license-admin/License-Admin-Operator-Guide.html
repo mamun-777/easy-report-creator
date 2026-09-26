@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <title>EasyReportCreator — License Admin Operator Guide</title>
+  <style>
+    /* Internal ops guide — set for A4 print / PDF */
+    @page {
+      size: A4;
+      margin: 18mm 18mm 20mm 22mm;
+      @bottom-left {
+        content: "TSPD · EasyReportCreator · Internal";
+        font-family: "Calibri", "Segoe UI", sans-serif;
+        font-size: 8.5pt;
+        color: #666;
+      }
+      @bottom-right {
+        content: "Page " counter(page);
+        font-family: "Calibri", "Segoe UI", sans-serif;
+        font-size: 8.5pt;
+        color: #666;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      font-size: 10.5pt;
+    }
+
+    body {
+      margin: 0;
+      color: #222;
+      font-family: "Calibri", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.38;
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Cover */
+    .cover {
+      page-break-after: always;
+      min-height: 240mm;
+      padding-top: 28mm;
+    }
+    .cover-rule {
+      border: 0;
+      border-top: 2.25pt solid #1a4a5c;
+      margin: 0 0 14pt 0;
+      width: 42mm;
+    }
+    .cover h1 {
+      font-family: "Cambria", "Georgia", "Times New Roman", serif;
+      font-size: 22pt;
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0 0 6pt 0;
+      color: #143948;
+      letter-spacing: -0.01em;
+    }
+    .cover .subtitle {
+      font-size: 12.5pt;
+      color: #444;
+      margin: 0 0 28pt 0;
+      line-height: 1.3;
+    }
+    .cover-meta {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10pt;
+      margin-top: 8pt;
+    }
+    .cover-meta th,
+    .cover-meta td {
+      border: 0.6pt solid #b8c4ca;
+      padding: 5pt 8pt;
+      text-align: left;
+      vertical-align: top;
+    }
+    .cover-meta th {
+      width: 38mm;
+      background: #f2f5f6;
+      font-weight: 600;
+      color: #333;
+    }
+    .cover-note {
+      margin-top: 36pt;
+      font-size: 9.5pt;
+      color: #555;
+      max-width: 130mm;
+      line-height: 1.4;
+    }
+
+    h1.section {
+      font-family: "Cambria", "Georgia", serif;
+      font-size: 15pt;
+      font-weight: 700;
+      color: #143948;
+      margin: 0 0 8pt 0;
+      padding-bottom: 3pt;
+      border-bottom: 0.75pt solid #c5d0d5;
+      page-break-after: avoid;
+    }
+    h2 {
+      font-family: "Calibri", "Segoe UI", sans-serif;
+      font-size: 12pt;
+      font-weight: 700;
+      color: #1a4a5c;
+      margin: 14pt 0 5pt 0;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #333;
+      margin: 10pt 0 4pt 0;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin: 0 0 7pt 0;
+      orphans: 3;
+      widows: 3;
+    }
+
+    ul, ol {
+      margin: 0 0 8pt 0;
+      padding-left: 16pt;
+    }
+    li {
+      margin-bottom: 3pt;
+    }
+
+    .lead {
+      margin-bottom: 10pt;
+    }
+
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 6pt 0 10pt 0;
+      font-size: 9.5pt;
+      line-height: 1.3;
+    }
+    table.data th,
+    table.data td {
+      border: 0.6pt solid #b8c4ca;
+      padding: 4.5pt 6pt;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.data th {
+      background: #eef2f4;
+      font-weight: 600;
+    }
+
+    .figure {
+      margin: 9pt 0 12pt 0;
+      page-break-inside: avoid;
+    }
+    .figure img {
+      display: block;
+      width: 100%;
+      max-width: 170mm;
+      height: auto;
+      border: 0.6pt solid #9aa8b0;
+      background: #f3f6f8;
+    }
+    .figure.half img {
+      max-width: 118mm;
+      margin: 0 auto;
+    }
+    .caption {
+      margin: 4pt 0 0 0;
+      font-size: 9pt;
+      color: #444;
+      line-height: 1.3;
+      font-style: italic;
+    }
+    .caption strong {
+      font-style: normal;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .tip {
+      border-left: 2.5pt solid #1a4a5c;
+      padding: 5pt 0 5pt 9pt;
+      margin: 8pt 0 10pt 0;
+      font-size: 9.5pt;
+      color: #333;
+      background: #f7f9fa;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: #143948;
+    }
+
+    .mono {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+
+    .toc {
+      margin: 6pt 0 14pt 0;
+    }
+    .toc p {
+      margin: 0 0 3pt 0;
+      font-size: 10.5pt;
+    }
+    .toc .dot {
+      color: #999;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    .small {
+      font-size: 9pt;
+      color: #555;
+    }
+
+    a { color: #1a4a5c; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <section class="cover">
+    <hr class="cover-rule">
+    <h1>License Admin<br>Operator Guide</h1>
+    <p class="subtitle">EasyReportCreator — issuing and managing 1-year licence keys</p>
+
+    <table class="cover-meta">
+      <tr><th>Document</th><td>ERC-OPS-LIC-001</td></tr>
+      <tr><th>Product</th><td>EasyReportCreator (web)</td></tr>
+      <tr><th>Audience</th><td>TSPD operators / support</td></tr>
+      <tr><th>Admin URL</th><td>https://easyreportcreator.com/admin/</td></tr>
+      <tr><th>Revision</th><td>B — 26 Sep 2026 (light-theme UI screenshots)</td></tr>
+      <tr><th>Status</th><td>Internal use</td></tr>
+    </table>
+
+    <p class="cover-note">
+      This guide walks through day-to-day licence work in the License Admin panel:
+      signing in, creating a key by hand, fulfilling a Moneybird purchase, copying
+      the key for the customer, and revoking access when needed. The admin interface
+      uses a light theme (white / pale grey surfaces with teal accents). Screenshots
+      show sample data for illustration only.
+    </p>
+  </section>
+
+  <!-- TOC -->
+  <h1 class="section">Contents</h1>
+  <div class="toc">
+    <p>1. Purpose and access</p>
+    <p>2. Signing in</p>
+    <p>3. Overview dashboard</p>
+    <p>4. Issuing a licence manually</p>
+    <p>5. Fulfilling a Moneybird purchase</p>
+    <p>6. Finding, copying and revoking keys</p>
+    <p>7. Customers list</p>
+    <p>8. What to tell the customer</p>
+    <p>9. Quick reference</p>
+  </div>
+
+  <p class="small">Licence model in short: 7-day trial on register → 1-year key
+  (<span class="mono">ERC-XXXX-XXXX-XXXX</span>) → 365 days counted from
+  <strong>activation</strong> in the report app, not from the moment you issue the key.</p>
+
+  <!-- 1 -->
+  <div class="page-break"></div>
+  <h1 class="section">1. Purpose and access</h1>
+  <p class="lead">
+    Use License Admin when you need to create a key, finish a paid checkout, or
+    revoke a key. Customers never use this panel; they activate keys under
+    <strong>Licence</strong> in the report application.
+  </p>
+
+  <table class="data">
+    <thead>
+      <tr><th>Task</th><th>Screen</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>See totals and pending checkouts</td><td>Overview</td></tr>
+      <tr><td>Create a key by hand</td><td>Licenses → New license</td></tr>
+      <tr><td>Issue a key after Moneybird payment</td><td>Purchases (or Overview)</td></tr>
+      <tr><td>Copy or revoke a key</td><td>Licenses</td></tr>
+      <tr><td>Look up holders</td><td>Customers</td></tr>
+    </tbody>
+  </table>
+
+  <p>Admin credentials are stored on the server in
+  <span class="mono">website/inc/config.local.php</span>
+  (<span class="mono">admin_username</span>,
+  <span class="mono">admin_password</span>,
+  <span class="mono">admin_api_key</span>).
+  Do not put passwords in email or chat.</p>
+
+  <!-- 2 -->
+  <h1 class="section">2. Signing in</h1>
+  <ol>
+    <li>Open <a href="https://easyreportcreator.com/admin/">https://easyreportcreator.com/admin/</a></li>
+    <li>Enter your username and password, then click <strong>Sign in</strong>.</li>
+    <li>Alternatively, use <em>Sign in with master API key instead</em> if you have the master key (break-glass access).</li>
+  </ol>
+
+  <div class="figure">
+    <img src="screenshots/01-sign-in.png" alt="License Admin sign-in screen">
+    <p class="caption"><strong>Figure 1.</strong> Sign-in screen (light theme). Prefer username/password for daily work; keep the master key for emergencies.</p>
+  </div>
+
+  <div class="tip">
+    If the dashboard does not appear after a correct login, hard-refresh the page
+    (Ctrl+F5). Session tokens are stored in the browser; signing out clears them.
+  </div>
+
+  <!-- 3 -->
+  <div class="page-break"></div>
+  <h1 class="section">3. Overview dashboard</h1>
+  <p>
+    After login you land on Overview. The cards show how many keys exist, how many
+    are still available, how many are in use, how many were revoked, and how many
+    purchase checkouts are waiting for a key.
+  </p>
+  <p>
+    When someone starts checkout on the public Buy page, a row appears under
+    <strong>Purchase checkouts</strong>. After you confirm payment in Moneybird,
+    click <strong>Issue key</strong> on that row (see section 5).
+  </p>
+
+  <div class="figure">
+    <img src="screenshots/02-overview.png" alt="Overview dashboard with pending purchases">
+    <p class="caption"><strong>Figure 2.</strong> Overview with sample pending purchases. The badge on Purchases in the sidebar mirrors the pending count.</p>
+  </div>
+
+  <p>Use <strong>+ New license</strong> in the top right when you need a key that
+  is not tied to a Moneybird intent (invoice paid offline, pilot grant, replacement key).</p>
+
+  <!-- 4 -->
+  <div class="page-break"></div>
+  <h1 class="section">4. Issuing a licence manually</h1>
+  <p>This is the usual path for support grants and offline payments.</p>
+
+  <h2>4.1 Open the form</h2>
+  <p>Click <strong>+ New license</strong> (toolbar) or open <strong>Licenses</strong>
+  and start a new key from there. The form asks for customer details and validity.</p>
+
+  <div class="figure">
+    <img src="screenshots/03-new-license-modal.png" alt="New license dialog filled with sample customer details">
+    <p class="caption"><strong>Figure 3.</strong> New license dialog. Validity defaults to 365 days. Notes are for your records (invoice number, ticket id, etc.).</p>
+  </div>
+
+  <h2>4.2 Fill the fields</h2>
+  <table class="data">
+    <thead>
+      <tr><th>Field</th><th>Guidance</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Customer name</td><td>Person who will receive the key</td></tr>
+      <tr><td>Email</td><td>Address you will send the key to</td></tr>
+      <tr><td>Company</td><td>Optional; helps later search</td></tr>
+      <tr><td>Validity (days)</td><td>Leave at 365 unless agreed otherwise</td></tr>
+      <tr><td>Notes</td><td>Optional internal reference</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4.3 Create and copy</h2>
+  <ol>
+    <li>Click <strong>Create license</strong>.</li>
+    <li>A short confirmation shows the new key in the form
+      <span class="mono">ERC-XXXX-XXXX-XXXX</span>.</li>
+    <li>Open <strong>Licenses</strong>, find the row, and click <strong>Copy</strong>.</li>
+    <li>Send the key to the customer (email or agreed channel).</li>
+  </ol>
+
+  <div class="figure">
+    <img src="screenshots/04-licenses-list.png" alt="Licenses list with Copy and Revoke actions">
+    <p class="caption"><strong>Figure 4.</strong> Licenses list after issue. Status <em>available</em> means the key is not activated yet; <em>in use</em> means a company has activated it.</p>
+  </div>
+
+  <div class="tip">
+    The year does not start when you press Create. It starts when the customer
+    activates the key on the Licence page in the report app.
+  </div>
+
+  <!-- 5 -->
+  <div class="page-break"></div>
+  <h1 class="section">5. Fulfilling a Moneybird purchase</h1>
+  <p>
+    When a buyer uses Buy on the public site, the system stores a purchase intent
+    and sends them to Moneybird. After payment is clear on your side:
+  </p>
+  <ol>
+    <li>Open <strong>Purchases</strong> (filter <strong>Pending</strong>), or use
+      <strong>Issue key</strong> on Overview.</li>
+    <li>Check name, email, company and VAT region against the payment.</li>
+    <li>Click <strong>Issue key</strong>.</li>
+  </ol>
+
+  <div class="figure">
+    <img src="screenshots/05-purchases.png" alt="Purchases screen with pending Issue key buttons">
+    <p class="caption"><strong>Figure 5.</strong> Purchases — pending filter. Issue key creates the licence, marks the intent fulfilled, tries to email the buyer, and copies the key to the clipboard.</p>
+  </div>
+
+  <p>If the toast says email could not be sent, paste the key into a normal email.
+  Do not click Issue key twice on the same purchase; the second attempt will fail
+  because the intent is already fulfilled.</p>
+
+  <!-- 6 -->
+  <h1 class="section">6. Finding, copying and revoking keys</h1>
+  <p>On <strong>Licenses</strong> you can search by key, name or email, and filter
+  by status:</p>
+  <table class="data">
+    <thead>
+      <tr><th>Filter</th><th>Meaning</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>All</td><td>Every issued key</td></tr>
+      <tr><td>Available</td><td>Issued, not yet activated</td></tr>
+      <tr><td>In use</td><td>Activated on a company account</td></tr>
+      <tr><td>Revoked</td><td>Blocked; cannot be used</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>Copy</strong> puts the key on the clipboard.
+    <strong>Revoke</strong> asks for confirmation, then blocks the key. If it was
+    already active, that company loses access. Revocation is permanent for that
+    key — issue a new one if the customer should regain access.
+  </p>
+
+  <!-- 7 -->
+  <h1 class="section">7. Customers list</h1>
+  <p>
+    <strong>Customers</strong> is a read-only view built from issued keys. Use it
+    to find contact details before you create a replacement key or chase an unpaid
+    fulfilment.
+  </p>
+
+  <div class="figure">
+    <img src="screenshots/06-customers.png" alt="Customers list">
+    <p class="caption"><strong>Figure 6.</strong> Customers derived from licence records (sample data).</p>
+  </div>
+
+  <!-- 8 -->
+  <div class="page-break"></div>
+  <h1 class="section">8. What to tell the customer</h1>
+  <p>After you send a key, include something close to the following:</p>
+  <ol>
+    <li>Sign in at <span class="mono">https://easyreportcreator.com/report/login.php</span></li>
+    <li>Open <strong>Licence</strong></li>
+    <li>Paste the key and click <strong>Activate 1-year licence</strong></li>
+  </ol>
+  <p>
+    Remind them that Plant 3D does not need to be running — only their
+    <span class="mono">ProcessPower.dcf</span> file — and that the 365 days start
+    at activation.
+  </p>
+
+  <!-- 9 -->
+  <h1 class="section">9. Quick reference</h1>
+  <h2>Daily checklist</h2>
+  <ol>
+    <li>Sign in to <span class="mono">/admin/</span></li>
+    <li>Check the Purchases badge / pending list</li>
+    <li>After Moneybird payment clears → Issue key</li>
+    <li>Confirm the customer received the email (or send the key yourself)</li>
+    <li>For refunds or abuse → Revoke on Licenses</li>
+  </ol>
+
+  <h2>Common problems</h2>
+  <table class="data">
+    <thead>
+      <tr><th>Symptom</th><th>What to try</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Login fails</td><td>Check credentials in server <span class="mono">config.local.php</span></td></tr>
+      <tr><td>Empty dashboard</td><td>Refresh; confirm you are still signed in</td></tr>
+      <tr><td>“Already fulfilled”</td><td>Find the existing key under Licenses by email</td></tr>
+      <tr><td>Customer says key invalid</td><td>Check format, not revoked, not used on another account</td></tr>
+      <tr><td>Email missing</td><td>Copy from Licenses and resend; ask them to check spam</td></tr>
+    </tbody>
+  </table>
+
+  <p class="small" style="margin-top:18pt;">
+    End of ERC-OPS-LIC-001 · Revision B · Prepared for TSPD internal use ·
+    Screenshots reflect the light-theme License Admin UI as of Sep 2026 (sample records).
+  </p>
+
+</body>
+</html>
